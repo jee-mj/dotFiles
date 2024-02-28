@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./zerotier.nix
     ];
 
   # Bootloader.
@@ -143,6 +144,7 @@
       barrier # KVM
       bitwig-studio # Multimedia
       brave # Web
+      cider # Multimedia
       # davinci-resolve # Multimedia
       discord # Chat
       element-desktop # Chat
@@ -200,6 +202,8 @@
     gh # Shell # Development
     git # Shell # Development
     go # Language # GO
+    # htop # Shell # Utility
+    htop-vim # Shell # Utility # Unstable
     libsForQt5.kate # Development # Office
     libsForQt5.konqueror # Web
     lsof # Shell # Administration
@@ -219,7 +223,8 @@
     # terminus-nerdfont # QoL
     tldr # Shell # QoL
     tree # Shell # QoL
-    # vimPlugins.LazyVim # Shell # Development # QoL
+    vim # Shell # Development
+    vimPlugins.LazyVim # Shell # Development # QoL
     vlc # Video Player
     wineasio # Cross-Platform
     winetricks # Cross-Platform
@@ -253,9 +258,9 @@
 
   networking.firewall = {
     enable = true; # Ensure the firewall is enabled
-    allowedTCPPorts = [ 24800 ]; # Allow TCP on port 24800
-    allowedUDPPorts = [ 24800 ]; # Allow UDP on port 24800
-  # Add any other configurations as needed
+    # allowedTCPPorts = [ 24800 ]; # Allow TCP on port 24800
+    # allowedUDPPorts = [ 24800 ]; # Allow UDP on port 24800
+    # currently borken
   };
 
   # This value determines the NixOS release from which the default
