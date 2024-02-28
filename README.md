@@ -16,7 +16,11 @@ This typically only works online though, and some people won't appreciate a slic
 
 ## Inspiration
 
-Well, step one was deciding to work with nix-os as my primary linux distribution. I've been a fan of QubesOS since at least 2015, but never had the right hardware to run it on my main workstation. Then, I found myself purchasing an AMD Ryzen 5 7600X around new years 2023. There was no support for it in the linux kernel upon release, so it was a lot of suffering and bug reports and windows.
+Well, step one was deciding to work with nix-os as my primary linux distribution.
+
+I've been a fan of QubesOS since at least 2015, but never had the right hardware to run it on my main workstation. Then, I found myself purchasing an AMD Ryzen 5 7600X around new years 2023.
+
+I was hopping distros a lot during this time (well, whatever was in the realm of possibility given my schedule but I did manage to waste my time installing, and using temporarily: SUSE SLED, Ubuntu, Debian, Qubes, Alpine, and Arch) There was no support for it in the linux kernel upon release, so it was a lot of suffering and bug reports and windows.
 
 A mate suggested using nix-os instead of QubesOS during a discourse. I looked at the documentation and picked it up over a week.
 
