@@ -198,6 +198,7 @@
     dotnet-aspnetcore # Web # .NET
     dotnetPackages.Nuget # Package Manager
     filezilla # Utilities
+    fish # Shell
     gdb # Shell # Development
     gh # Shell # Development
     git # Shell # Development
@@ -218,13 +219,14 @@
     pciutils # Shell # Administration
     # powershell # Shell
     qemu # Virtualisation
+    stow # QoL # dotfiles
     slack # Chat
     strace # Shell # Development # TODO: LEARN
     # terminus-nerdfont # QoL
     tldr # Shell # QoL
     tree # Shell # QoL
     vim # Shell # Development
-    vimPlugins.LazyVim # Shell # Development # QoL
+    # vimPlugins.LazyVim # Shell # Development # QoL
     vlc # Video Player
     wineasio # Cross-Platform
     winetricks # Cross-Platform
