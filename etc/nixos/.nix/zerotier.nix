@@ -1,7 +1,6 @@
 let
-  privateZeroTierInterfaces = [ ""  ]; # ZT NET INTERFACE # Begins with `zk`
+  privateZeroTierInterfaces = [ "" ]; # ZT NET INTERFACE # ztxxxxxxx
 in {
-  system.stateVersion = "23.11";
 
   services.openssh = {
     enable = true;
@@ -10,10 +9,6 @@ in {
       PasswordAuthentication = true;
       X11Forwarding = true;
     };
-    #ports = [ 22 ];
-
-
-
   };
 
 #  services.openssh.enable = true;
@@ -21,7 +16,7 @@ in {
 #  services.openssh.passwordAuthentication = false;
 
   networking.firewall.enable = true;
-  networking.firewall.trustedInterfaces = privateZeroTierInterfaces; # TRUST VPN ONLY
+  networking.firewall.trustedInterfaces = privateZeroTierInterfaces; # TRUST VPN
   
   services.avahi = {
     enable = true;
@@ -49,17 +44,17 @@ in {
   services.fail2ban = {
     enable = true;
     maxretry = 5;
-    ignoreIP = [ "" ]; # Ignore one IP address
+    ignoreIP = ["172.22.0.2"];
     bantime = "2160h";
 
     bantime-increment = {
       enable = true; # Enable increment of bantime after each violation
       multipliers = "1 2 4 8 16 32 64";
-      maxtime = "138240h"; # Do not ban for more than 1 week # this might be bad practice
+      maxtime = "138240h"; # Do not ban for more than 1 week
       overalljails = true; # Calculate the bantime based on all the violations
     };
   };
 
   services.zerotierone.enable = true;
-  services.zerotierone.joinNetworks = [ "" ]; # ZT NETWORK ID # Should be 16 digits
-}
+  services.zerotierone.joinNetworks = [ "" ]; # ZT NETWORK ID - 16 digits
+} # TODO: Check network ID

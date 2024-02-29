@@ -10,36 +10,19 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # aliases
+alias nvim-use-node "nix-shell ~/.config/nvim/shell.nix --run nvim"
+alias nixgc "sudo ~/.config/jee-mj/nixgc.sh"
 alias lt "ll --tree --level=2 -ah"
 alias ll "eza -l -g --icons"
 alias g git
-command -qv nvim && alias vim nvim
-
-set -gx EDITOR nvim
-
-# Homebrew
-set -gx PATH /opt/homebrew/bin $PATH
 
 # set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
-# NodeJS
-set -gx PATH node_modules/.bin $PATH
+command -qv nvim && alias vim nvim
 
-# Go
-set -g GOPATH $HOME/go
-set -gx PATH $GOPATH/bin $PATH
-
-# NVM
-function __check_rvm --on-variable PWD --description 'Do nvm stuff'
-    status --is-command-substitution; and return
-
-    if test -f .nvmrc; and test -r .nvmrc
-        nvm use
-    else
-    end
-end
+set -gx EDITOR nvim
 
 switch (uname)
     case Darwin
