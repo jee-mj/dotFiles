@@ -17,22 +17,8 @@
   };
 
   services = {
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-
     xserver = {
       desktopManager.plasma5.enable = true;
-      enable = true;
-      videoDrivers = [ "nvidia" "amdgpu" ];
-      xkb = {
-	layout = "us";
-	variant = "";
-      };
-
       displayManager = {
         autoLogin = {
           enable = true;
@@ -42,53 +28,25 @@
       };
     };
   };
-
   programs = {
     _1password-gui = {
-      enable = true;
       polkitPolicyOwners = [ "mj" ];
     };
-    adb.enable = true;
-    chromium = {
-      enable = true;
-      homepageLocation = "https://jee-mj.github.io/portfolio";
-    };
     firefox = {
-      enable = true;
       preferences = {
         "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
-    fish = {
-      enable = true;
-    };
-    fzf = {
-      keybindings = true;
-      fuzzyCompletion = true;
-    };
     gnupg = {
       agent = {
         enable = true;
-        enableSSHSupport = true;
       };
     };
     kdeconnect.enable = true;
     mtr = {
       enable = true;
     };
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
-    virt-manager.enable = true;
-    wireshark.enable = true;
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      ohMyZsh.enable = true;
-      syntaxHighlighting.enable = true;
-    };
   };
+
 }
+

@@ -20,6 +20,69 @@
 
   sound.enable = true;
 
+
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    xserver = {
+      enable = true;
+      videoDrivers = [ "nvidia" "amdgpu" ];
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+
+      displayManager = {
+        sddm.enable = true;
+      };
+    };
+  };
+
+  programs = {
+    _1password-gui = {
+      enable = true;
+    };
+    adb.enable = true;
+    chromium = {
+      enable = true;
+      homepageLocation = "https://jee-mj.github.io/portfolio";
+    };
+    firefox = {
+      enable = true;
+    };
+    fish = {
+      enable = true;
+    };
+    fzf = {
+      keybindings = true;
+      fuzzyCompletion = true;
+    };
+    gnupg = {
+      agent = {
+        enableSSHSupport = true;
+      };
+    };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+    virt-manager.enable = true;
+    wireshark.enable = true;
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      ohMyZsh.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+  };
+
   hardware = {
     bluetooth = {
       enable = true;
