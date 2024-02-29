@@ -13,11 +13,9 @@ with pkgs; [
   fishPlugins.github-copilot-cli-fish
   fishPlugins.z
   fzf
-  fzf-zsh
   lsof
   nixpkgs-fmt
   oh-my-fish
-  oh-my-zsh
   p7zip
   ripgrep
   strace

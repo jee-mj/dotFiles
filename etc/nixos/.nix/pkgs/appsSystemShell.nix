@@ -8,5 +8,4 @@ with pkgs; [
   tldr
   xsel
   vim
-  zsh
 ]
