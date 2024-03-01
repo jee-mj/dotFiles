@@ -9,6 +9,10 @@ in {
       PasswordAuthentication = true;
       X11Forwarding = true;
     };
+    #ports = [ 10120 ];
+
+
+
   };
 
 #  services.openssh.enable = true;
@@ -16,7 +20,7 @@ in {
 #  services.openssh.passwordAuthentication = false;
 
   networking.firewall.enable = true;
-  networking.firewall.trustedInterfaces = privateZeroTierInterfaces; # TRUST VPN
+  networking.firewall.trustedInterfaces = privateZeroTierInterfaces; # TRUST VPN ONLY
   
   services.avahi = {
     enable = true;

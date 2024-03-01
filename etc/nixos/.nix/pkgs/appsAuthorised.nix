@@ -3,22 +3,23 @@ with pkgs; [
   autojump
   barrier
   binutils
+  chatblade
+  chatgpt-cli
   eza
   fd
-  fishPlugins.async-prompt
-  fishPlugins.autopair
-  fishPlugins.colored-man-pages
-  fishPlugins.forgit
-  fishPlugins.fzf-fish
-  fishPlugins.github-copilot-cli-fish
-  fishPlugins.z
   fzf
+  gpt4all
+  htop-vim
+  jan
   lsof
+  niv
   nixpkgs-fmt
-  oh-my-fish
   p7zip
+  pciutils
   ripgrep
   strace
+  stow
   tree
   unrar
+  yai
 ]

@@ -16,14 +16,15 @@ in
 {
   ## System Environment
 
-  environment.systemPackages =
-    shellApps   ++
-    kdeApps     ++
-    baseApps    ++
-    officeApps  ++
-    financeApps ++
-    socialApps  ++
-    networkApps;
+  environment = {
+    systemPackages =
+      shellApps   ++
+      kdeApps     ++
+      baseApps    ++
+      financeApps ++
+      socialApps  ++  networkApps;
+    sessionVariables.NIXOS_OZONE_WL = "1";
+  };
 
   ## Users
 
@@ -31,11 +32,15 @@ in
 
     users = {
       guest = {
+        openssh.authorizedKeys = {
+          keys = [];
+          keyFiles = [];
+        };
         password = "guest";
         group = "guest";
         isNormalUser = true;
         description = "welcome";
-        extraGroups = [ "networkmanager" ];
+        extraGroups = [ ];
         shell = pkgs.fish;
         packages = mediaApps;
       };
@@ -46,10 +51,11 @@ in
         extraGroups = [ "networkmanager" "wheel" "podman" ];
         shell = pkgs.fish;
         packages =
-          userApps  ++
-          devLibs   ++
-          devApps   ++
-          vmApps    ++  mediaApps;
+          officeApps  ++
+          userApps    ++
+          devLibs     ++
+          devApps     ++
+          vmApps      ++  mediaApps;
       };
     };
 

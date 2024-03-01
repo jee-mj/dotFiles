@@ -8,7 +8,7 @@
       /etc/nixos/.nix/zerotier.nix
     ];
     
-  system.stateVersion = "unstable";
+  system.stateVersion = "23.11";
   
   time = {
     timeZone = "Australia/Sydney";
@@ -36,10 +36,6 @@
         layout = "us";
         variant = "";
       };
-
-      displayManager = {
-        sddm.enable = true;
-      };
     };
   };
 
@@ -48,10 +44,6 @@
       enable = true;
     };
     adb.enable = true;
-    chromium = {
-      enable = true;
-      homepageLocation = "https://jee-mj.github.io/portfolio";
-    };
     firefox = {
       enable = true;
     };
@@ -67,11 +59,35 @@
         enableSSHSupport = true;
       };
     };
+    nano.enable = true;
     neovim = {
       enable = true;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
+    };
+    ssh = {
+
+    };
+    steam = {
+      enable = true;
+    };
+    tmux = {
+      aggressiveResize = true;
+      baseIndex = 1;
+    	clock24 = true;
+    	enable = true;
+      terminal = "xterm-256-color";
+      keyMode = "vi";
+    	plugins = with pkgs.tmuxPlugins; [
+        yank
+        tmux-fzf
+        fuzzback
+        tmux-thumbs
+        dracula
+        tmux-colors-solarized
+        continuum
+    	];
     };
     virt-manager.enable = true;
     wireshark.enable = true;

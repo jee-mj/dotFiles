@@ -20,11 +20,13 @@
     xserver = {
       desktopManager.plasma5.enable = true;
       displayManager = {
+        sddm.enable = true;
+        sddm.wayland.enable = true;
+        defaultSession = "plasmawayland";
         autoLogin = {
           enable = true;
           user = "guest";
         };
-        sddm.enable = true;
       };
     };
   };
@@ -46,6 +48,7 @@
     mtr = {
       enable = true;
     };
+    xwayland.enable = true;
   };
 
 }

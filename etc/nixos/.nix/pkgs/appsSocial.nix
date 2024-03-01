@@ -1,7 +1,42 @@
 { pkgs }:
 with pkgs; [
+  beeper
+  chatty
   discord
+  eggdrop
   element-desktop
+  ergochat
+  glowing-bear
+  keet
+  quassel
+  quasselDaemon
+  quasselClient
+  revolt-desktop
+  session-desktop
+  signal-desktop
+  simplex-chat-desktop
   slack
+  ssh-chat
   teams-for-linux
+  telegram-desktop
+  twitch-tui
+  weechat
+  weechatScripts.edit
+  weechatScripts.highmon
+  weechatScripts.url_hint
+  weechatScripts.wee-slack
+  weechatScripts.multiline
+  weechatScripts.weechat-go
+  weechatScripts.zncplayback
+  weechatScripts.weechat-grep
+  weechatScripts.weechat-matrix
+  weechatScripts.colorize_nicks
+  weechatScripts.buffer_autoset
+  weechatScripts.weechat-autosort
+  weechatScripts.weechat-notify-send
+  weechatScripts.weechat-matrix-bridge
+  wire-desktop
+  whatsapp-for-linux
+  whatsapp-chat-exporter
+  zulip
 ]

@@ -1,5 +1,6 @@
 { pkgs }:
 with pkgs; [
+  libsForQt5.neochat
   libsForQt5.accounts-qml-module
   libsForQt5.accounts-qt
   libsForQt5.akonadi
@@ -350,7 +351,6 @@ with pkgs; [
   libsForQt5.qt5.qtwebchannel
   libsForQt5.qt5.qtwebengine
   libsForQt5.qt5.qtwebglplugin
-  #libsForQt5.qt5.qtt
   libsForQt5.qt5.qtwebsockets
   libsForQt5.qt5.qtwebview
   libsForQt5.qt5.qtx11extras

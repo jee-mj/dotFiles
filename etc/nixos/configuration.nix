@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  system.stateVersion = "unstable";
+  system.stateVersion = "23.11";
 
   imports =
     [

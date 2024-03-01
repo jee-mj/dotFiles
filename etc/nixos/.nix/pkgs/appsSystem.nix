@@ -2,11 +2,8 @@
 with pkgs; [
   anki
   cider
-  fish
-  lm_sensors
-  nerdfonts
-  niv
-  openssl
+  firefox
+  qbittorrent-qt5
   steam
   vlc
   zerotierone
