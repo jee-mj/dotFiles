@@ -22,4 +22,6 @@ with pkgs; [
   tree
   unrar
   yai
+  zsh
+  zsh-powerlevel10k
 ]
