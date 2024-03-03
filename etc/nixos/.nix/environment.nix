@@ -41,7 +41,7 @@ in
         isNormalUser = true;
         description = "welcome";
         extraGroups = [ ];
-        shell = pkgs.fish;
+        shell = pkgs.zsh;
         packages = mediaApps;
       };
       mj = {

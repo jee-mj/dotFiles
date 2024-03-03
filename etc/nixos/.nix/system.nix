@@ -40,16 +40,10 @@
   };
 
   programs = {
-    _1password-gui = {
-      enable = true;
-    };
+    _1password-gui.enable = true;
     adb.enable = true;
-    firefox = {
-      enable = true;
-    };
-    fish = {
-      enable = true;
-    };
+    firefox.enable = true;
+    fish.enable = true;
     fzf = {
       keybindings = true;
       fuzzyCompletion = true;
@@ -69,15 +63,13 @@
     ssh = {
 
     };
-    steam = {
-      enable = true;
-    };
+    steam.enable = true;
     tmux = {
       aggressiveResize = true;
       baseIndex = 1;
     	clock24 = true;
     	enable = true;
-      terminal = "xterm-256-color";
+      terminal = "xterm-256color";
       keyMode = "vi";
     	plugins = with pkgs.tmuxPlugins; [
         yank
@@ -91,6 +83,7 @@
     };
     virt-manager.enable = true;
     wireshark.enable = true;
+    zsh.enable = true;
   };
 
   hardware = {
