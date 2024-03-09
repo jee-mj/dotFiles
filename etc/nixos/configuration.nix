@@ -5,6 +5,7 @@
 
     /etc/nixos/.nix/system.nix
     /etc/nixos/.nix/environment.nix
+    /etc/nixos/.nix/patch/codeServer.nix
     <nixos-wsl/modules>
   ];
 
