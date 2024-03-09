@@ -1,6 +1,6 @@
 # 👋
 
-# jee-mj's dotfiles
+# jee-mj's dotfiles for WSL
 
 ## Yet Another dotFiles Repository
 
