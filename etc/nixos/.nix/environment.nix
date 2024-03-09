@@ -3,7 +3,7 @@ let
   baseApps = import /etc/nixos/.nix/pkgs/appsBase.nix { inherit pkgs; };
   networkApps = import /etc/nixos/.nix/pkgs/appsNetwork.nix { inherit pkgs; };
   shellApps = import /etc/nixos/.nix/pkgs/appsShell.nix { inherit pkgs; };
-  clang = import /etc/nixos/.nix/pkgs/libc.nix {inherit pkgs;};
+  clang = import /etc/nixos/.nix/pkgs/libC.nix {inherit pkgs;};
 in
 {
   ## System Environment
