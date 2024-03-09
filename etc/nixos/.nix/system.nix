@@ -7,7 +7,12 @@
     timeZone = "Australia/Sydney";
   };
 
-  nix.settings.trusted-users = [ "nixos" ];
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes"];
+      trusted-users = [ "nixos" ];
+    };
+  };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [];
 
