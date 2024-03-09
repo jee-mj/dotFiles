@@ -4,3 +4,6 @@
 [submodule "home/user/.dev"]
 	path = home/user/.dev
 	url = https://github.com/the-nix-way/dev-templates
+[submodule "etc/nixos/NixOS-WSL"]
+	path = etc/nixos/NixOS-WSL
+	url = https://github.com/nix-community/NixOS-WSL
