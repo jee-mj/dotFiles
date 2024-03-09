@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 let
-  baseApps = import /etc/nixos/.nix/pkgs/appsSystem.nix { inherit pkgs; };
+  baseApps = import /etc/nixos/.nix/pkgs/appsBase.nix { inherit pkgs; };
   devApps = import /etc/nixos/.nix/pkgs/appsDevelopment.nix { inherit pkgs; };
   devLibs = import /etc/nixos/.nix/pkgs/libsDevelopment.nix { inherit pkgs; };
   financeApps = import /etc/nixos/.nix/pkgs/appsFinance.nix { inherit pkgs; };
-  kdeApps = import /etc/nixos/.nix/pkgs/appsSystemQt.nix { inherit pkgs; };
+  kdeApps = import /etc/nixos/.nix/pkgs/appsQt.nix { inherit pkgs; };
   mediaApps = import /etc/nixos/.nix/pkgs/appsMedia.nix { inherit pkgs; };
   networkApps = import /etc/nixos/.nix/pkgs/appsNetwork.nix { inherit pkgs; };
   officeApps = import /etc/nixos/.nix/pkgs/appsOffice.nix { inherit pkgs; };
-  shellApps = import /etc/nixos/.nix/pkgs/appsSystemShell.nix { inherit pkgs; };
+  shellApps = import /etc/nixos/.nix/pkgs/appsShell.nix { inherit pkgs; };
   socialApps = import /etc/nixos/.nix/pkgs/appsSocial.nix { inherit pkgs; };
   userApps = import /etc/nixos/.nix/pkgs/appsAuthorised.nix { inherit pkgs; };
   vmApps = import /etc/nixos/.nix/pkgs/appsVirtualisation.nix { inherit pkgs; };

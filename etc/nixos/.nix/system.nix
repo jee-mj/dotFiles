@@ -14,9 +14,18 @@
     timeZone = "Australia/Sydney";
   };
 
-  nix.settings.trusted-users = [ "mj" ];
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [];
+  nix = {
+    settings = {
+      # experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "mj" ];
+    };
+  };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [];
+    };
+  };
 
   sound.enable = true;
 

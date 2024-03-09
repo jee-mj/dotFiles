@@ -1,3 +1,6 @@
 [submodule "home/user/.oh-my-zsh/custom/themes/powerlevel10k"]
 	path = home/user/.oh-my-zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "home/user/.dev"]
+	path = home/user/.dev
+	url = https://github.com/the-nix-way/dev-templates
