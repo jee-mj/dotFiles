@@ -2,29 +2,39 @@
 {
   boot = {
     initrd = {
+      luks.devices."luks-9a63ba3a-dd04-42ef-8765-14bc2ac33065".device = "/dev/disk/by-uuid/9a63ba3a-dd04-42ef-8765-14bc2ac33065";
       systemd = {
         dbus.enable = true;
         enable = true;
         enableTpm2 = true;
-        groups.guest.gid = 1000;
-        groups.users.gid = 100;
         network.enable = true;
-        users.guest.uid = 100;
-        users.guest.shell = "/run/current-system/sw/bin/fish";
-        users.mj.uid = 1000;
-        users.mj.shell = "/run/current-system/sw/bin/fish";
       };
     };
     kernel.enable = true;
-    kernelModules = ["ecryptfs"];
+    kernel.sysctl = {
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.core.default_qdisc" = "fq";
+      "net.core.wmem_max" = 67108864;
+      "net.core.rmem_max" = 67108864;
+      "net.ipv4.tcp_rmem" = "1024 131072 67108864";
+      "net.ipv4.tcp_wmem" = "1024 131072 67108864";
+    };
+    kernelModules = ["ecryptfs" "tcp_bbr"];
+    kernelParams = ["nohibernate"];
     loader = {
-      systemd-boot = {
-        enable = true;
-        memtest86.enable = true;
-      };
       efi = {
         canTouchEfiVariables = true;
       };
+      grub = {
+        device = "nodev";
+        efiSupport = true;
+        enable = true;
+        useOSProber = true;
+        timeoutStyle = "menu";
+      };
+      timeout = 300;
     };
+    supportedFilesystems = ["ntfs"];
+    tmp.cleanOnBoot = true;
   };
 }

@@ -8,4 +8,7 @@ with pkgs; [
   whois
   wireshark
   zeek
+  openssl
+  quictls
+  urbit
 ]
