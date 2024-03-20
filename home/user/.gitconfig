@@ -1,0 +1,12 @@
+[user]
+    name = jee-mj
+    email = 28581723+jee-mj@users.noreply.github.com
+[core]
+    editor = code --wait
+    autocrlf = input
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+
