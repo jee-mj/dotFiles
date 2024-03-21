@@ -19,7 +19,6 @@ in
       shellApps   ++
       baseApps    ++
       networkApps ++ kde;
-    sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
   ## Users
@@ -33,7 +32,7 @@ in
         group = "users";
         isNormalUser = true;
         description = "vimv";
-        extraGroups = [ "networkmanager" "wheel" "podman" "mysql" ];
+        extraGroups = [ "networkmanager" "wheel" "podman" "mysql" "libvirtd" "audio" "video" "disk" "qemu" "kvm" "sshd" ];
         shell = pkgs.fish;
         packages = userApps ++ devApps;
       };

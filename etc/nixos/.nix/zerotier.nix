@@ -48,7 +48,7 @@ in {
   services.fail2ban = {
     enable = true;
     maxretry = 5;
-    ignoreIP = ["172.22.0.2"];
+    ignoreIP = [ "172.22.0.2" ];
     bantime = "2160h";
 
     bantime-increment = {

@@ -19,8 +19,9 @@
       "net.ipv4.tcp_rmem" = "1024 131072 67108864";
       "net.ipv4.tcp_wmem" = "1024 131072 67108864";
     };
-    kernelModules = ["ecryptfs" "tcp_bbr"];
-    kernelParams = ["nohibernate"];
+    kernelModules = [ "ecryptfs" "tcp_bbr" ];
+    kernelPackages = pkgs.linuxPackages_xen_dom0;
+    kernelParams = [ "nohibernate" "dom0_mem=4096M" ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
@@ -34,7 +35,7 @@
       };
       timeout = 300;
     };
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
     tmp.cleanOnBoot = true;
   };
 }

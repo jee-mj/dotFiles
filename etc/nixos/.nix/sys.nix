@@ -2,12 +2,14 @@
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
-      /etc/nixos/.nix/boot.nix
-      /etc/nixos/.nix/lamp.nix
-      /etc/nixos/.nix/zerotier.nix
       /etc/nixos/.nix/hardware/cpu-amd.nix
+      /etc/nixos/hardware-configuration.nix
       /etc/nixos/.nix/hardware/gpu-nvidia.nix
+      /etc/nixos/.nix/boot.nix
+      /etc/nixos/.nix/shell.nix
+      /etc/nixos/.nix/virt.nix
+      /etc/nixos/.nix/ws.nix
+      /etc/nixos/.nix/zerotier.nix
     ];
     
   system.stateVersion = "23.11";
@@ -34,7 +36,7 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
       trusted-users = [ "mj" ];
     };
@@ -74,11 +76,6 @@
         "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
-    fish.enable = true;
-    fzf = {
-      keybindings = true;
-      fuzzyCompletion = true;
-    };
     gnupg = {
       agent = {
         enable = true;
@@ -88,36 +85,10 @@
     mtr = {
       enable = true;
     };
-    nano.enable = false;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
-    tmux = {
-      aggressiveResize = true;
-      baseIndex = 1;
-      clock24 = true;
-      enable = true;
-      terminal = "xterm-256color";
-      keyMode = "vi";
-      plugins = with pkgs.tmuxPlugins; [
-        yank
-        tmux-fzf
-        fuzzback
-        tmux-thumbs
-        dracula
-        tmux-colors-solarized
-        gruvbox
-        continuum
-      ];
-    };
   };
 
   security.rtkit.enable = true;
   services = {
-    flatpak.enable = true;
     ntp.enable = true;
     printing.enable = true;
     pipewire = {
@@ -126,7 +97,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-
     xserver = {
       displayManager = {
         autoLogin = {
@@ -142,27 +112,5 @@
     };
   };
 
-  virtualisation = {
-    docker = {
-      enable = false;
-      enableNvidia = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
-    };
-    libvirtd.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket = {
-        enable = true;
-      };
-      defaultNetwork = {
-        settings = {
-          dns_enabled = true;
-        };
-      };
-    };
-  };
+  
 }

@@ -57,4 +57,6 @@ with pkgs; [
   wineWowPackages.waylandFull
   q4wine
   #bottles
+
+  ollama shell_gpt
 ]

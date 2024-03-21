@@ -5,7 +5,7 @@
 
   imports =
     [
-      /etc/nixos/.nix/system.nix
+      /etc/nixos/.nix/sys.nix
       /etc/nixos/.nix/environment/kde-wl.nix
     ];
 
