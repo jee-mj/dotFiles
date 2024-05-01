@@ -2,6 +2,8 @@
 
 # jee-mj's dotfiles
 
+### current status: virtualisation does not work
+
 ## Yet Another dotFiles Repository
 
 Or, YAdotFilesR for short. A fun consequence of this name being that we can directly apply an adjective after it's name. For instance:
