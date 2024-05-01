@@ -60,5 +60,5 @@ in {
   };
 
   services.zerotierone.enable = true;
-  services.zerotierone.joinNetworks = [ "" ]; # ZT NETWORK ID - 16 digits
+  services.zerotierone.joinNetworks = [ "fada62b0154ff07f" ]; # ZT NETWORK ID - 16 digits
 } # TODO: Check network ID

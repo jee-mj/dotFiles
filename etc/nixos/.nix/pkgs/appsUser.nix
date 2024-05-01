@@ -15,6 +15,7 @@ with pkgs; [
   firefox
   netsurf.browser
   tor-browser
+  microsoft-edge
 
   audacity
   bitwig-studio4

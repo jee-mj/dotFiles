@@ -1,7 +1,7 @@
 {config, pkgs, ...}: {
   programs.virt-manager.enable = true;
   virtualisation = {
-    appvm = { enable = true; user = "mj"; };
+#    appvm = { enable = true; user = "mj"; };
 
     # bios = null;
     docker = {
