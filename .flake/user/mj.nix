@@ -35,7 +35,7 @@
       git = {
         enable = true;
         extraConfig = {
-          credential.helper = "gh auth git-credential";
+          credential.helper = "${pkgs.gh}/bin/gh auth git-credential";
           gpg."ssh".program = "${pkgs._1password}/bin/op-ssh-sign";
           push.autoSetupRemote = true;
         };
@@ -250,6 +250,9 @@
     home = {
       username = "mj";
       homeDirectory = "/home/mj";
+      packages = with pkgs; [
+        gh
+      ];
       pointerCursor = {
         name = "macOS-Monterey";
         package = pkgs.apple-cursor;
