@@ -22,7 +22,7 @@
       git = {
         enable = true;
         extraConfig = {
-          credential.helper = "/home/mj/.nix-profile/bin/gh auth git-credential";
+          credential.helper = "gh auth git-credential";
           gpg."ssh".program = "${pkgs._1password}/bin/op-ssh-sign";
           push.autoSetupRemote = true;
         };
