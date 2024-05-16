@@ -9,11 +9,7 @@
     ../theme.nix
   ];
 
-  options = {};
   config = {
-    programs = {
-    };
-
     home = {
       username = "vim";
       homeDirectory = "/home/vimv";

@@ -13,12 +13,18 @@
   config = {
     programs = {
       gh = {
+        enable = true;
         settings = {
           editor = "code";
           git_protocol = "ssh";
         };
       };
       git = {
+        enable = true;
+        extraConfig = {
+          gpg."ssh".program = "${pkgs._1password}/bin/op-ssh-sign";
+          push.autoSetupRemote = true;
+        };
         lfs.enable = true;
         userName = "jee-mj";
         userEmail = "28581723+jee-mj@users.noreply.github.com";
@@ -220,6 +226,8 @@
           "git.enableSmartCommit" = true;
           "terminal.integrated.fontFamily" = "RobotoMono Nerd Font Propo";
           "workbench.iconTheme" = "vscode-icons";
+          "markdown-preview-enhanced.revealjsTheme" = "night.css";
+          "markdown-preview-enhanced.previewTheme" = "night.css";
         };
       };
     };

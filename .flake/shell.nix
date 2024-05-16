@@ -7,31 +7,6 @@
     home-manager = {
       enable = true;
     };
-
-    gh = {
-      enable = true;
-      package = pkgs.gh;
-    };
-    gh-dash = {
-      enable = true;
-      package = pkgs.gh-dash;
-      settings = {
-        prSections = [
-          {
-            title = "My Pull Requests";
-            filters = "is:open author:@me";
-          }
-        ];
-      };
-    };
-    git = {
-      enable = true;
-      extraConfig = {
-        gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
-        push.autoSetupRemote = true;
-      };
-      package = pkgs.git-crypt;
-    };
     htop = {
       enable = true;
       package = pkgs.htop-vim;

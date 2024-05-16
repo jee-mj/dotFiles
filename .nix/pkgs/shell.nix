@@ -1,6 +1,7 @@
 {pkgs}:
 with pkgs; [
   bat
+  direnv
   gdb
   htop-vim
   rsync

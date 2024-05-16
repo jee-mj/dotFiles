@@ -13,7 +13,6 @@
   pluginApps = import ./plugins.nix {inherit pkgs;};
   shellApps = import ./shell.nix {inherit pkgs;};
   usrApps = import ./user.nix {inherit pkgs;};
-  vscodePlugins = import ./vscode.nix {inherit pkgs;};
 in {
   environment.systemPackages = shellApps ++ baseApps ++ netApps;
 
