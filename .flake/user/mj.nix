@@ -14,9 +14,22 @@
     programs = {
       gh = {
         enable = true;
+        package = pkgs.gh;
         settings = {
           editor = "code";
           git_protocol = "ssh";
+        };
+      };
+      gh-dash = {
+        enable = true;
+        package = pkgs.gh-dash;
+        settings = {
+          prSections = [
+            {
+              title = "My Pull Requests";
+              filters = "is:open author:@me";
+            }
+          ];
         };
       };
       git = {
@@ -27,6 +40,7 @@
           push.autoSetupRemote = true;
         };
         lfs.enable = true;
+        package = pkgs.git;
         userName = "jee-mj";
         userEmail = "28581723+jee-mj@users.noreply.github.com";
       };
