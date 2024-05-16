@@ -7,6 +7,9 @@
     ./shell.nix
   ];
   programs = {
+    fzf = {
+      enableFishIntegration = true;
+    };
     mcfly = {
       enableFishIntegration = true;
     };
@@ -22,8 +25,12 @@
       shellAbbrs = {
         nixgc = "sudo ~/.config/jee-mj/nixgc.fish";
       };
+      shellAliases = {
+        nvim = "nvim-use-node";
+      };
       shellInit = ''
         set fish_greeting ""
+        touch ~/.local/share/fish/fish_history
         set -g theme_color_scheme terminal-dark
         set -g fish_prompt_pwd_dir_length 1
         set -g theme_display_user yes

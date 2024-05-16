@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./shell.nix
   ];
@@ -8,12 +12,16 @@
       enableCompletion = true;
       enableVteIntegration = true;
       historySize = 65536;
-      historyFile = "";
+      historyFile = "~/.bash_history";
       historyFileSize = 65536;
       historyIgnore = ["lsd" "cd" "ls" "exit" ":q"];
       shellAliases = {
         nixgc = "sudo ~/.config/jee-mj/nixgc.sh";
+        nvim = "nvim-use-node";
       };
+    };
+    fzf = {
+      enableBashIntegration = true;
     };
     mcfly = {
       enableBashIntegration = true;

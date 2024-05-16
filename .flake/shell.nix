@@ -3,9 +3,17 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./neovim.nix
+  ];
   programs = {
     home-manager = {
       enable = true;
+    };
+    fzf = {
+      enable = true;
+      package = pkgs.fzf;
+      tmux.enableShellIntegration = true;
     };
     htop = {
       enable = true;
@@ -17,7 +25,9 @@
     };
     mcfly = {
       enable = true;
+      fuzzySearchFactor = 3;
       fzf.enable = true;
+      keyScheme = "vim";
     };
     mise = {
       enable = true;
@@ -27,25 +37,9 @@
       enable = true;
       package = pkgs.navi;
     };
-
-    neovim = {
-      package = pkgs.neovim-unwrapped;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      withNodeJs = true;
-      withPython3 = true;
-      withRuby = true;
-    };
   };
   home = {
     file = {
-      nvim = {
-        source = ./config/nvim;
-        target = ".config/nvim";
-        recursive = true;
-      };
       sshAgentOnePassword = {
         target = ".ssh/config";
         text = ''

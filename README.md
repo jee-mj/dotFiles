@@ -25,13 +25,14 @@ Prior to activating the configuration, either change the users or create two use
 To clone the repository, run the following command:
 
 ```bash
-nix run nispkgs#git clone https://github.com/jee-mj/dotFiles.git ~/dotFiles
+nix run nispkgs#git clone https://github.com/jee-mj/dotFiles.git ~/dotFiles --experimental-features 'nix-command flakes'
 ```
 
 To activate the configuration, run the following command:
 
 ```bash
-sudo nixos-rebuild boot --flake ~/dotFiles
+cp /etc/nixos/hardware-configuration.nix ~/dotFiles/hardware-configuration.nix
+sudo nixos-rebuild boot --flake ~/dotFiles --experimental-features 'nix-command flakes'
 ```
 
 Lastly, to switch to the new configuration, run the following command:
@@ -39,5 +40,21 @@ Lastly, to switch to the new configuration, run the following command:
 ```bash
 sudo reboot
 ```
+
+PS: Once you're in, you can clean up the installation by running the following command:
+
+```bash
+nixgc
+```
+
+#### LUKS Encryption
+
+If you have full disk encryption enabled, you will need to uncomment and replace `<uuid>` at line 8 of `.nix/boot.nix` with the UUID listed in your `/etc/nixos/configuration.nix` file.
+
+It doesn't matter if you forgot to do this before rebooting, you can simply reboot back into the previous generation, make the changes, and run the `nixos-rebuild` command again.
+
+#### `nixos-rebuild switch`
+
+I don't recommend using `nixos-rebuild switch` because it can fail sometimes. `nixos-rebuild boot` is more reliable, and way cleaner.
 
 ## 🙏

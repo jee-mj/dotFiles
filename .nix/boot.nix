@@ -5,7 +5,7 @@
 }: {
   boot = {
     initrd = {
-      luks.devices."luks-aa762d87-2eaa-4c4b-bd7f-e4461dfc066c".device = "/dev/disk/by-uuid/aa762d87-2eaa-4c4b-bd7f-e4461dfc066c";
+      # luks.devices."luks-<uuid>>".device = "/dev/disk/by-uuid/<uuid>>";
       systemd = {
         dbus.enable = true;
         enable = true;
