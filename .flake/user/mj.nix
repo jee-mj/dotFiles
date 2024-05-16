@@ -35,7 +35,6 @@
       git = {
         enable = true;
         extraConfig = {
-          credential.helper = "gh auth git-credential store";
           gpg."ssh".program = "${pkgs._1password}/bin/op-ssh-sign";
           push.autoSetupRemote = true;
         };

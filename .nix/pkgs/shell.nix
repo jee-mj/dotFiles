@@ -3,6 +3,7 @@ with pkgs; [
   bat
   direnv
   gdb
+  gh # remove once supported
   htop-vim
   rsync
   tldr
