@@ -39,15 +39,6 @@
     };
   };
   home = {
-    file = {
-      sshAgentOnePassword = {
-        target = ".ssh/config";
-        text = ''
-          Host *
-            IdentityAgent ~/.1password/agent.sock
-        '';
-      };
-    };
     shellAliases = {
       lsd = "lsd -la";
       lst = "lsd -la --tree --depth 2";

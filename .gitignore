@@ -1,0 +1,2 @@
+.flake/user/private/*
+# .flake/user/*.nix

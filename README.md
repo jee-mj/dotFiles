@@ -10,6 +10,8 @@ These are my dotFiles for NixOS.
 
 Anyone can use these to build my preferred working environment on a workstation using AMD CPU with NVIDIA GPU.
 
+You will have to generate a lockfile if you don't have one.
+
 ### Configuration
 
 |           | System | Home     |
