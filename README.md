@@ -2,7 +2,7 @@
 
 ## Now with 100% more flakes
 
-### current status: virtualisation STILL does not work
+### current status: awaiting consolidation into `baremetal`
 
 ## Yet Another dotFiles Repository
 
