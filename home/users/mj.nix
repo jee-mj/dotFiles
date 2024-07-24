@@ -7,9 +7,9 @@
 }: {
   imports = [
     ../fish.nix
-    ../theme.nix
+    ../themes/breeze-dark.nix
     ../vscode.nix
-    ./private/mj/ssh.nix ? 
+    # ./private/mj/ssh.nix
   ];
 
   options = {};

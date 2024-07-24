@@ -7,7 +7,7 @@
 }: {
   imports = [
     ../bash.nix
-    ../theme.nix
+    ../themes/solarized.nix
   ];
 
   config = {

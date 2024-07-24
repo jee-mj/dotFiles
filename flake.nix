@@ -25,7 +25,9 @@
     musnix,
     home-manager,
     alejandra,
+    nixos-hardware,
   }: let
+    hostnameroot = "URIEL";
     system = "x86_64-linux";
     user = "mj";
     pkgs = import nixpkgs {
@@ -35,11 +37,12 @@
     lib = nixpkgs.lib;
   in rec {
     nixosConfigurations = (
-      import ./flake/system/ws.nix {
+      import ./flake/system/surface.nix {
         inherit (nixpkgs) lib;
-        inherit inputs user system home-manager;
+        inherit inputs user system home-manager hostnameroot;
       }
     );
+    # Home-Manager Configuration
     hmConfig = {
       vim = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
@@ -49,13 +52,13 @@
             home.username = "vim";
             home.homeDirectory = "/home/vimv";
             imports = [
-              .home/user/vim.nix
+              home/user/vim.nix
             ];
           }
         ];
       };
       mj = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+        pkgs= pkgs;
         modules = [
           {
             home.stateVersion = "24.11";

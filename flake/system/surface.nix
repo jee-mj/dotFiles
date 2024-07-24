@@ -3,25 +3,20 @@
   inputs,
   system,
   home-manager,
-  hostnameroot,
   user,
+  hostnameroot,
   ...
 }: {
-  URIEL-WS = lib.nixosSystem {
+  "${hostnameroot}-SURFACE" = lib.nixosSystem {
     inherit system;
     modules = [
       {
         environment.systemPackages = [
           inputs.alejandra.defaultPackage."x86_64-linux"
         ];
-        networking.hostname = "${hostnameroot}-WS";
       }
       inputs.musnix.nixosModules.musnix
-      inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
+      inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
       ./.nix/sys.nix
       ../overlay/discord.nix
       inputs.home-manager.nixosModules.home-manager
