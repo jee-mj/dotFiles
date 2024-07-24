@@ -1,6 +1,10 @@
 # flake.nix
 {
   inputs = {
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs.nixpkgs.follows = "nixpkgs"; # TODO: remove the `inputs.nixpkgs` bit if possible
+    };
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
@@ -11,31 +15,58 @@
     musnix = {
       url = "github:musnix/musnix";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+    };
   };
-
-  outputs = inputs: rec {
-    nixosConfigurations.URIEL-WS = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        inputs.musnix.nixosModules.musnix
-        ./.nix/sys.nix
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.users.vim = {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    musnix,
+    home-manager,
+    alejandra,
+  }: let
+    system = "x86_64-linux";
+    user = "mj";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    lib = nixpkgs.lib;
+  in rec {
+    nixosConfigurations = (
+      import ./flake/system/ws.nix {
+        inherit (nixpkgs) lib;
+        inherit inputs user system home-manager;
+      }
+    );
+    hmConfig = {
+      vim = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs;
+        modules = [
+          {
+            home.stateVersion = "24.11";
+            home.username = "vim";
+            home.homeDirectory = "/home/vimv";
             imports = [
-              .flake/user/vim.nix
+              .home/user/vim.nix
             ];
-            nixpkgs.config.allowUnfree = true;
-          };
-          home-manager.users.mj = {
+          }
+        ];
+      };
+      mj = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs;
+        modules = [
+          {
+            home.stateVersion = "24.11";
+            home.username = user;
+            home.homeDirectory = "/home/mj";
             imports = [
-              .flake/user/mj.nix
+              home/user/mj.nix
             ];
-            nixpkgs.config.allowUnfree = true;
-          };
-        }
-      ];
-      specialArgs = {inherit inputs;};
+          }
+        ];
+      };
     };
   };
 }

@@ -1,2 +1,2 @@
-.flake/user/private/*
-# .flake/user/*.nix
+home/users/private/*
+hardware-configuration.nix

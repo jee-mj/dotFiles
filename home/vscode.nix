@@ -83,12 +83,11 @@
           kamadorueda.alejandra
           llvm-vs-code-extensions.vscode-clangd
           lokalise.i18n-ally
-          matangover.mypy
+          # matangover.mypy
           mathiasfrohlich.kotlin
           mattn.lisp
           marp-team.marp-vscode
           mechatroner.rainbow-csv
-          mgt19937.typst-preview
           mhutchie.git-graph
           mikestead.dotenv
           mishkinf.goto-next-previous-member
@@ -125,7 +124,6 @@
           ms-vsliveshare.vsliveshare
           mvllow.rose-pine
           njpwerner.autodocstring
-          nvarner.typst-lsp
           ocamllabs.ocaml-platform
           quicktype.quicktype
           pkief.material-icon-theme
@@ -200,10 +198,12 @@
           "git.autofetch" = true;
           "git.confirmSync" = false;
           "git.enableSmartCommit" = true;
+          "github.copilot.editor.enableAutoCompletions" = false;
+          "markdown-preview-enhanced.revealjsTheme" = "night.css";
+          "markdown-preview-enhanced.previewTheme" = "solarized-dark.css";
+          "markdown-preview-enhanced.codeBlockTheme" = "solarized-dark.css";
           "terminal.integrated.fontFamily" = "RobotoMono Nerd Font Propo";
           "workbench.iconTheme" = "vscode-icons";
-          "markdown-preview-enhanced.revealjsTheme" = "night.css";
-          "markdown-preview-enhanced.previewTheme" = "night.css";
         };
       };
     };

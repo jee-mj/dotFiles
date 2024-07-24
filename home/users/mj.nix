@@ -2,30 +2,22 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
   imports = [
     ../fish.nix
     ../theme.nix
     ../vscode.nix
-    ./private/mj/ssh.nix ? {
-      home = {
-        file = {
-          sshAgent = {
-            target = ".ssh/config";
-            text = ''
-              # Edit this ssh config file with home-manager
-              # at dotFiles/.flake/user/private/ssh.nix
-            '';
-          };
-        };
-      };
-    }
+    ./private/mj/ssh.nix ? 
   ];
 
   options = {};
   config = {
     programs = {
+      firefox = {
+        enable = true;
+      };
       gh = {
         enable = true;
         package = pkgs.gh;
@@ -60,7 +52,7 @@
     };
 
     home = {
-      username = "mj";
+      username = user;
       homeDirectory = "/home/mj";
       packages = with pkgs; [
         gh
@@ -70,7 +62,7 @@
         package = pkgs.apple-cursor;
         size = 24;
       };
-      stateVersion = "24.05";
+      stateVersion = "24.11";
       sessionVariables = {
         EDITOR = "nvim";
       };

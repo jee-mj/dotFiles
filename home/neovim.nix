@@ -88,58 +88,19 @@
         vim-startuptime
         vim-tmux-navigator
         which-key-nvim
-        {
-          name = "LuaSnip";
-          path = luasnip;
-        }
-        {
-          name = "blame-me.nvim";
-          path = blame-me-nvim;
-        }
-        {
-          name = "catppuccin";
-          path = catppuccin-nvim;
-        }
-        {
-          name = "cmake-gtest.nvim";
-          path = cmake-gtest-nvim;
-        }
-        {
-          name = "cmake-tools.nvim";
-          path = cmake-tools-nvim;
-        }
-        {
-          name = "huez.nvim";
-          path = huez-nvim;
-        }
-        {
-          name = "mini.ai";
-          path = mini-nvim;
-        }
-        {
-          name = "mini.bufremove";
-          path = mini-nvim;
-        }
-        {
-          name = "mini.comment";
-          path = mini-nvim;
-        }
-        {
-          name = "mini.indentscope";
-          path = mini-nvim;
-        }
-        {
-          name = "mini.pairs";
-          path = mini-nvim;
-        }
-        {
-          name = "mini.surround";
-          path = mini-nvim;
-        }
-        {
-          name = "yanky.nvim";
-          path = yanky-nvim;
-        }
+        { name = "LuaSnip"; path = luasnip; }
+        { name = "blame-me.nvim"; path = blame-me-nvim; }
+        { name = "catppuccin"; path = catppuccin-nvim; }
+        { name = "cmake-gtest.nvim"; path = cmake-gtest-nvim; }
+        { name = "cmake-tools.nvim"; path = cmake-tools-nvim; }
+        { name = "huez.nvim"; path = huez-nvim; }
+        { name = "mini.ai"; path = mini-nvim; }
+        { name = "mini.bufremove"; path = mini-nvim; }
+        { name = "mini.comment"; path = mini-nvim; }
+        { name = "mini.indentscope"; path = mini-nvim; }
+        { name = "mini.pairs"; path = mini-nvim; }
+        { name = "mini.surround"; path = mini-nvim; }
+        { name = "yanky.nvim"; path = yanky-nvim; }
       ];
       defaultEditor = true;
       viAlias = true;
@@ -893,7 +854,7 @@
             },
           }
         '';
-      };
+      }; 
       nvimPluginsTreesitter = {
         target = ".config/nvim/lua/plugins/treesitter.lua";
         text = ''
@@ -965,7 +926,7 @@
             },
           }
         '';
-      };
+      }; 
       nvimPluginsUi = {
         target = ".config/nvim/lua/plugins/ui.lua";
         text = ''
@@ -1125,13 +1086,13 @@
            ▄▄▄▄    ██░ ██  ██▓ ███▄ ▄███▓
           ▓█████▄ ▓██░ ██▒▓██▒▓██▒▀█▀ ██▒
           ▒██▒ ▄██▒██▀▀██░▒██▒▓██    ▓██░
-          ▒██░█▀  ░▓█ ░██ ░██░▒██    ▒██
+          ▒██░█▀  ░▓█ ░██ ░██░▒██    ▒██ 
           ░▓█  ▀█▓░▓█▒░██▓░██░▒██▒   ░██▒
           ░▒▓███▀▒ ▒ ░░▒░▒░▓  ░ ▒░   ░  ░
           ▒░▒   ░  ▒ ░▒░ ░ ▒ ░░  ░      ░
-           ░    ░  ░  ░░ ░ ▒ ░░      ░
-           ░       ░  ░  ░ ░         ░
-                ░
+           ░    ░  ░  ░░ ░ ▒ ░░      ░   
+           ░       ░  ░  ░ ░         ░   
+                ░                        
                 ]]
 
                 logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -1140,7 +1101,7 @@
             },
           }
         '';
-      };
+      }; 
 
       nvimInitLua = {
         target = ".config/nvim/init.lua";

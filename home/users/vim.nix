@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
   imports = [
@@ -17,7 +18,6 @@
         name = "macOS-Monterey";
         package = pkgs.apple-cursor;
       };
-      stateVersion = "24.05";
       sessionVariables = {
         EDITOR = "nvim";
       };

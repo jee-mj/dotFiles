@@ -39,6 +39,38 @@
     };
   };
   home = {
+    file = {
+      konsoleDefaultProfile = {
+        target = ".local/share/konsole/default.profile";
+        text = ''
+          [Appearance]
+          ColorScheme=Breeze
+          TabColor=0,0,0
+
+          [Cursor Options]
+          CursorShape=1
+
+          [General]
+          Environment=TERM=xterm-256color,COLORTERM=truecolor
+          LocalTabTitleFormat=%d : %n
+          Name=Profile
+          Parent=FALLBACK/
+
+          [Interaction Options]
+          UnderlineFilesEnabled=true
+
+          [Keyboard]
+          KeyBindings=default
+
+          [Scrolling]
+          HistoryMode=2
+
+          [Terminal Features]
+          BlinkingCursorEnabled=true
+          UrlHintsModifiers=0
+        '';
+      };
+    };
     shellAliases = {
       lsd = "lsd -la";
       lst = "lsd -la --tree --depth 2";
