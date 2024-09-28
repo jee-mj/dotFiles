@@ -63,6 +63,5 @@
       };
       pulse.enable = true;
     };
-    vscode-server.enable = true;
   };
 }

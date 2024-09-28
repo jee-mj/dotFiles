@@ -15,7 +15,6 @@
     };
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
   outputs =
@@ -26,7 +25,6 @@
       nix-darwin,
       home-manager,
       nixos-hardware,
-      vscode-server,
       nixos-wsl
     }:
     let
@@ -61,11 +59,13 @@
           hostnameroot
           pkgs
           pkgs-unstable
+          nixos-wsl
+          nixos-hardware
           ;
       };
 
       # Home-Manager Configuration
-      hmConfig = builtins.listToAttrs (
+      homeConfigurations = builtins.listToAttrs (
         builtins.map (username: {
           name = username;
           value = home-manager.lib.homeManagerConfiguration {

@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../fish.nix
-    ../themes/breeze-dark.nix
     ../vscode.nix
     # ./private/mj/ssh.nix
   ];
@@ -48,7 +47,7 @@
     };
 
     home = {
-      username = user;
+      username = "kalki";
       homeDirectory = "/home/kalki";
       packages = with pkgs; [
         gh

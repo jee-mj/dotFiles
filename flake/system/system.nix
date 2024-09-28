@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   system,
   home-manager,
   user,
@@ -8,7 +7,9 @@
   pkgs,
   pkgs-unstable,
   hostnameroot,
-  nixos-wsl
+  nixos-wsl,
+  nixos-hardware,
+
 }: {
   "${hostnameroot}-LAB" = lib.nixosSystem {
     inherit system;
@@ -22,10 +23,10 @@
         networking.hostName = "${hostnameroot}-LAB";
       }
       # Hardware Configuration START
-      inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      nixos-hardware.nixosModules.common-cpu-amd
+      nixos-hardware.nixosModules.common-cpu-amd-pstate
+      nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      nixos-hardware.nixosModules.common-gpu-nvidia
       # Hardware Configuration END
       ./.lab/sys.nix
       ./.lab/net.nix
@@ -37,9 +38,15 @@
           useUserPackages = true;
           users = {
             ${user} = {
-              imports = [
-                ../../home/users/${user}.nix
-              ];
+              if ${user} = "kalki" then
+                imports = [
+                  ../../home/users/${user}.nix
+                  ../../home/vscode.nix
+                ];
+              else
+                imports = [
+                  ../../home/users/${user}.nix
+                ];
               nixpkgs.config = {
                 allowUnfree = true;
               };
@@ -47,7 +54,6 @@
           };
         };
       }
-      inputs.vscode-server.nixosModules.default
     ];
     specialArgs = {inherit hostnameroot user inputs pkgs-unstable;};
   };
@@ -64,13 +70,13 @@
         networking.hostName = "${hostnameroot}-WS";
       }
       # Hardware Configuration START
-      inputs.nixos-hardware.nixosModules.common-cpu-amd
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      nixos-hardware.nixosModules.common-cpu-amd
+      nixos-hardware.nixosModules.common-cpu-amd-pstate
+      nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      nixos-hardware.nixosModules.common-gpu-nvidia
       # Hardware Configuration END
       ./.nix/sys.nix
-      inputs.home-manager.nixosModules.home-manager
+      home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
@@ -102,7 +108,7 @@
     modules = [
       nixos-wsl.nixosModules.default
       {
-        networking.hostName = "${hostnameroot}-LAB";
+        networking.hostName = "${hostnameroot}-WSL";
         wsl = {
           enable = true;
           defaultUser = "${user}";
@@ -118,13 +124,15 @@
             interop = {
               appendWindowsPath = true;
               enabled = true;
-              includePath = true;
-              register = false;
             };
+          };
+          interop = {
+            includePath = true;
+            register = false;
           };
         };
       }
-      ./.lab/sys.nix
+      ./.wsl/sys.nix
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -132,18 +140,28 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           users = {
-            ${user} = {
-              imports = [
-                ../../home/users/${user}.nix
-              ];
-              nixpkgs.config = {
-                allowUnfree = true;
+            if ${user} = "kalki" then
+              ${user} = {
+                imports = [
+                  ../../home/users/${user}.nix
+                  ../../home/vscode.nix
+                ];
+                nixpkgs.config = {
+                  allowUnfree = true;
+                };
               };
-            };
+            else
+              ${user} = {
+                imports = [
+                  ../../home/users/${user}.nix
+                ];
+                nixpkgs.config = {
+                  allowUnfree = true;
+                };
+              };
           };
         };
       }
-      inputs.vscode-server.nixosModules.default
     ];
     specialArgs = {inherit hostnameroot user inputs pkgs-unstable;};
   };
@@ -193,11 +211,11 @@
   #       networking.hostName = "${hostnameroot}-SURFACE";
   #     }
   #     # Hardware Configuration START
-  #     inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+  #     nixos-hardware.nixosModules.microsoft-surface-pro-intel
   #     # Hardware Configuration END
   #     ./.nix/sys.nix
   #     ../overlay/discord.nix
-  #     inputs.home-manager.nixosModules.home-manager
+  #     home-manager.nixosModules.home-manager
   #     {
   #       home-manager = {
   #         extraSpecialArgs = {inherit user;};

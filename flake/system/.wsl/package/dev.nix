@@ -2,4 +2,5 @@
 with pkgs; [
   direnv
   devenv
+  zig
 ]

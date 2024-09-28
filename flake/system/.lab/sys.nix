@@ -85,6 +85,5 @@
         PasswordAuthentication = false;     # Enforce key-based authentication
       };
     };
-    vscode-server.enable = true;
   };
 }

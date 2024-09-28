@@ -4,7 +4,7 @@
   lib, pkgs, config, nixosConfig, osConfig
 }: {
   imports = [
-    ./nvchad.nix
+    ./neovim.nix
   ];
   programs = {
     home-manager = {

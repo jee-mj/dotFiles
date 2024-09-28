@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../bash.nix
-    ../themes/solarized.nix
   ];
 
   config = {
