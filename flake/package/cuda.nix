@@ -23,7 +23,7 @@ with pkgs; [
   # cudaPackages.cudnn
   # cudaPackages.cutensor
   cudaPackages.fabricmanager
-  cudaPackages.libcublas
+  cudaPackages.libcublas  
   cudaPackages.libcufft
   cudaPackages.libcufile
   cudaPackages.libcurand

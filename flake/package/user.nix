@@ -27,7 +27,7 @@ with pkgs; [
   element-desktop
   element-desktop-wayland
   hexchat
-  teams-for-linux
+  # teams-for-linux # depends on electron 29.4.6 (eol)
   telegram-desktop
   revolt-desktop
   session-desktop

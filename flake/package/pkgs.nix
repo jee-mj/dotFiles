@@ -2,8 +2,7 @@
   config,
   pkgs,
   lib,
-  user,
-  ...
+  user
 }: let
   aiApps = import ./ai.nix {inherit pkgs;};
   audioApps = import ./audio.nix {inherit pkgs;};

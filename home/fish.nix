@@ -1,7 +1,7 @@
 {
-  config,
-  pkgs,
-  ...
+  user,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config, nixosConfig, osConfig
 }: {
   imports = [
     ./shell.nix
@@ -26,7 +26,7 @@
         nixgc = "sudo ~/.config/jee-mj/nixgc.fish";
       };
       shellAliases = {
-        nvim = "nvim-use-node";
+        # nvim = "nvim-use-node";
       };
       shellInit = ''
         set fish_greeting ""

@@ -2,8 +2,7 @@
   config,
   pkgs,
   user,
-  hostnameroot,
-  ...
+  hostnameroot
 }: {
   imports = [
     ../../../hardware-configuration.nix
@@ -16,7 +15,7 @@
     ./user.nix
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "24.05";
   documentation.nixos.enable = false;
   fonts.fontconfig.cache32Bit = true;
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";

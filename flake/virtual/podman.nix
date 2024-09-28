@@ -1,8 +1,10 @@
 {
-  config,
-  pkgs,
-  ...
+  inputs,
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config, pkgs-unstable
 }: {
+  hardware.nvidia-container-toolkit.enable = true;
   virtualisation = {
     podman = {
       enable = true;

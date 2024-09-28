@@ -73,7 +73,6 @@ pkgs.vscode-with-extensions.override {
     julialang.language-julia
     justusadam.language-haskell
     kamikillerto.vscode-colorize
-    kamadorueda.alejandra
     llvm-vs-code-extensions.vscode-clangd
     lokalise.i18n-ally
     matangover.mypy

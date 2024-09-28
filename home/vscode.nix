@@ -1,7 +1,7 @@
 {
-  config,
-  pkgs,
-  ...
+  user,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config, nixosConfig, osConfig
 }: {
   config = {
     programs = {
@@ -80,10 +80,8 @@
           julialang.language-julia
           justusadam.language-haskell
           kamikillerto.vscode-colorize
-          kamadorueda.alejandra
           llvm-vs-code-extensions.vscode-clangd
           lokalise.i18n-ally
-          # matangover.mypy
           mathiasfrohlich.kotlin
           mattn.lisp
           marp-team.marp-vscode
@@ -204,6 +202,8 @@
           "markdown-preview-enhanced.codeBlockTheme" = "solarized-dark.css";
           "terminal.integrated.fontFamily" = "RobotoMono Nerd Font Propo";
           "workbench.iconTheme" = "vscode-icons";
+          "workbench.activityBar.location" = "top";
+          "workbench.colorTheme" = "Monokai";
         };
       };
     };

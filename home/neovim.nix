@@ -1,107 +1,11 @@
 {
-  config,
-  pkgs,
-  ...
+  user,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config, nixosConfig, osConfig
 }: {
   programs = {
     neovim = {
       package = pkgs.neovim-unwrapped;
-      plugins = with pkgs.vimPlugins; [
-        LazyVim
-        better-escape-nvim
-        bufferline-nvim
-        clangd_extensions-nvim
-        cmp-buffer
-        cmp-nvim-lsp
-        cmp-path
-        cmp_luasnip
-        conform-nvim
-        crates-nvim
-        dashboard-nvim
-        danger-vim
-        dracula-nvim
-        dressing-nvim
-        editorconfig-vim
-        flash-nvim
-        friendly-snippets
-        gitsigns-nvim
-        headlines-nvim
-        indent-blankline-nvim
-        kanagawa-nvim
-        lualine-nvim
-        marks-nvim
-        neoconf-nvim
-        neodev-nvim
-        neogit
-        neo-tree-nvim
-        neorg
-        neovim-ayu
-        nix-develop-nvim
-        noice-nvim
-        none-ls-nvim
-        nui-nvim
-        nvim-cmp
-        nvim-dap
-        nvim-dap-ui
-        nvim-dap-virtual-text
-        nvim-lint
-        nvim-lspconfig
-        nvim-navic
-        nvim-notify
-        nvim-spectre
-        nvim-treesitter
-        nvim-treesitter-context
-        nvim-treesitter-textobjects
-        nvim-ts-autotag
-        nvim-ts-context-commentstring
-        nvim-web-devicons
-        obsidian-nvim
-        oil-nvim
-        overseer-nvim
-        papercolor-theme
-        persistence-nvim
-        plenary-nvim
-        project-nvim
-        rust-tools-nvim
-        snowy-vim
-        sqlite-lua
-        tailwindcss-colorizer-nvim
-        telescope-fzf-native-nvim
-        telescope-nvim
-        tmux-navigator
-        todo-comments-nvim
-        tokyonight-nvim
-        trouble-nvim
-        tree-sitter-json
-        tree-sitter-markdown
-        tree-sitter-nix
-        tree-sitter-python
-        tree-sitter-rust
-        tree-sitter-toml
-        tree-sitter-yaml
-        typescript-nvim
-        venv-selector-nvim
-        vim-illuminate
-        vim-lsp
-        vim-markdown
-        vim-nix
-        vim-startuptime
-        vim-tmux-navigator
-        which-key-nvim
-        { name = "LuaSnip"; path = luasnip; }
-        { name = "blame-me.nvim"; path = blame-me-nvim; }
-        { name = "catppuccin"; path = catppuccin-nvim; }
-        { name = "cmake-gtest.nvim"; path = cmake-gtest-nvim; }
-        { name = "cmake-tools.nvim"; path = cmake-tools-nvim; }
-        { name = "huez.nvim"; path = huez-nvim; }
-        { name = "mini.ai"; path = mini-nvim; }
-        { name = "mini.bufremove"; path = mini-nvim; }
-        { name = "mini.comment"; path = mini-nvim; }
-        { name = "mini.indentscope"; path = mini-nvim; }
-        { name = "mini.pairs"; path = mini-nvim; }
-        { name = "mini.surround"; path = mini-nvim; }
-        { name = "yanky.nvim"; path = yanky-nvim; }
-      ];
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;

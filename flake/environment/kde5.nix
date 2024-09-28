@@ -1,8 +1,7 @@
 {
   config,
   lib,
-  pkgs,
-  ...
+  pkgs
 }: {
   imports = [
     ./desktop.nix
@@ -29,7 +28,7 @@
   };
 
   services = {
-    desktopManager.plasma6.enable = true;
+    xserver.desktopManager.plasma5.enable = true;
     displayManager = {
       sddm = {
         autoNumlock = true;

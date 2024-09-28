@@ -1,10 +1,10 @@
 {
-  config,
-  pkgs,
-  ...
+  user,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config, nixosConfig, osConfig
 }: {
   imports = [
-    ./neovim.nix
+    ./nvchad.nix
   ];
   programs = {
     home-manager = {
@@ -18,10 +18,6 @@
     htop = {
       enable = true;
       package = pkgs.htop-vim;
-    };
-    librewolf = {
-      enable = true;
-      package = pkgs.librewolf;
     };
     mcfly = {
       enable = true;
@@ -71,10 +67,15 @@
         '';
       };
     };
+    packages = with pkgs; [
+      # neovim
+      ripgrep
+      xclip
+    ];
     shellAliases = {
       lsd = "lsd -la";
       lst = "lsd -la --tree --depth 2";
-      nvim-use-node = "nix-shell ~/.config/nvim/shell.nix --run nvim";
+      # nvim-use-node = "nix-shell ~/.config/nvim/shell.nix --run nvim";
     };
   };
 }

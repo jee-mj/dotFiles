@@ -1,75 +1,87 @@
-# flake.nix
 {
   inputs = {
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs.nixpkgs.follows = "nixpkgs"; # TODO: remove the `inputs.nixpkgs` bit if possible
-    };
     nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+    nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    musnix = {
-      url = "github:musnix/musnix";
-    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    musnix,
-    home-manager,
-    alejandra,
-    nixos-hardware,
-  }: let
-    hostnameroot = "URIEL";
-    system = "x86_64-linux";
-    user = "mj";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    lib = nixpkgs.lib;
-  in rec {
-    nixosConfigurations = (
-      import ./flake/system/ws.nix {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      nix-darwin,
+      home-manager,
+      nixos-hardware,
+      vscode-server,
+      nixos-wsl
+    }:
+    let
+      allUsers = [
+        "mj"
+        "vim"
+        "kalki"
+        "root"
+      ];
+      hostnameroot = "URIEL";
+      system = "x86_64-linux";
+      user = "mj";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      lib = nixpkgs.lib;
+    in
+    rec {
+      nixosConfigurations = import ./flake/system/system.nix {
         inherit (nixpkgs) lib;
-        inherit inputs user system home-manager hostnameroot;
-      }
-    );
-    # Home-Manager Configuration
-    hmConfig = {
-      vim = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        modules = [
-          {
-            home.stateVersion = "24.11";
-            home.username = "vim";
-            home.homeDirectory = "/home/vimv";
-            imports = [
-              home/user/vim.nix
-            ];
-          }
-        ];
+        inherit
+          inputs
+          allUsers
+          user
+          system
+          home-manager
+          hostnameroot
+          pkgs
+          pkgs-unstable
+          ;
       };
-      mj = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        modules = [
-          {
-            home.stateVersion = "24.11";
-            home.username = user;
-            home.homeDirectory = "/home/mj";
-            imports = [
-              home/user/mj.nix
+
+      # Home-Manager Configuration
+      hmConfig = builtins.listToAttrs (
+        builtins.map (username: {
+          name = username;
+          value = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            modules = [
+              {
+                home.stateVersion = "24.05";
+                home.username = username;
+                home.homeDirectory = "/home/${username}";
+                imports = [
+                  ./home/users/${username}.nix
+                ];
+              }
             ];
-          }
-        ];
-      };
+          };
+        }) allUsers
+      );
     };
-  };
 }

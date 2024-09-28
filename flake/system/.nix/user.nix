@@ -1,12 +1,19 @@
 {
   config,
-  pkgs,
-  ...
+  pkgs
 }: {
   users = {
     users = {
       root = {
         isSystemUser = true;
+        shell = pkgs.fish;
+      };
+      kalki = {
+        group = "users";
+        isNormalUser = true;
+        description = "kali";
+        extraGroups = ["networkmanager" "wheel" "podman" "audio" "jackaudio" "video" "disk" "sshd" "libvirtd" "docker"];
+        home = "/home/kalki";
         shell = pkgs.fish;
       };
       mj = {
@@ -20,7 +27,7 @@
       vim = {
         group = "users";
         isNormalUser = true;
-        description = "vim";
+        description = "vimv";
         extraGroups = ["podman" "audio" "jackaudio" "video" "disk" "sshd"];
         home = "/home/vimv";
         shell = pkgs.bash;

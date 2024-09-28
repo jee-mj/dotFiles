@@ -2,8 +2,7 @@
 {
   config,
   pkgs,
-  user,
-  ...
+  user
 }: {
   imports = [
     ../bash.nix

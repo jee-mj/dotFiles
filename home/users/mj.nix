@@ -1,9 +1,8 @@
 # home.nix
 {
-  config,
-  pkgs,
   user,
-  ...
+  specialArgs, options, modulesPath,
+  lib, pkgs, config, nixosConfig, osConfig
 }: {
   imports = [
     ../fish.nix
@@ -15,9 +14,6 @@
   options = {};
   config = {
     programs = {
-      firefox = {
-        enable = true;
-      };
       gh = {
         enable = true;
         package = pkgs.gh;
@@ -62,7 +58,7 @@
         package = pkgs.apple-cursor;
         size = 24;
       };
-      stateVersion = "24.11";
+      stateVersion = "24.05";
       sessionVariables = {
         EDITOR = "nvim";
       };

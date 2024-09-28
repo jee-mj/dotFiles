@@ -1,4 +1,4 @@
-{config, ...}: {
+{config}: {
   time = {
     hardwareClockInLocalTime = true;
     timeZone = "Australia/Sydney";

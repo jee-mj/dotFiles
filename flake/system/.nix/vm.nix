@@ -1,12 +1,11 @@
 {
   config,
   pkgs,
-  user,
-  ...
+  user
 }: {
   imports = [
     ../../virtual/zerotier.nix
-    ../../virtual/docker.nix
+    # ../../virtual/docker.nix
     ../../virtual/podman.nix
     ../../virtual/virt-manager.nix
   ];
