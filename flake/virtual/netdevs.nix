@@ -1,4 +1,4 @@
-{lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath, pkgs-unstable}:
+{lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath}:
 {
   systemd.network = {
     netdevs = {

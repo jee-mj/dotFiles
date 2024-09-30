@@ -2,7 +2,7 @@
   inputs,
   user, hostnameroot,
   specialArgs, options, modulesPath,
-  lib, pkgs, config, pkgs-unstable
+  lib, pkgs, config
 }: {
   programs.virt-manager = {
     enable = true;

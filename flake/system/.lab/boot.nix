@@ -3,7 +3,6 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
   user,
   hostnameroot,
   specialArgs, options, modulesPath,

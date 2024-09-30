@@ -1,8 +1,8 @@
 {
   inputs,
-  user, neve, hostnameroot,
+  user, hostnameroot,
   specialArgs, options, modulesPath,
-  lib, pkgs, config, pkgs-unstable
+  lib, pkgs, config
 }: {
   users = {
     users = {

@@ -2,7 +2,6 @@
   inputs,
   config,
   pkgs,
-  pkgs-unstable,
   user,
   lib,
   hostnameroot,

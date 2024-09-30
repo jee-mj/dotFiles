@@ -6,11 +6,7 @@
   user,
   allUsers,
   pkgs,
-#  pkgs-unstable,
-  hostnameroot,
-  nixos-wsl,
-  nixos-hardware,
-  neve
+  hostnameroot
 }: {
   "${hostnameroot}-LAB" = lib.nixosSystem {
     inherit system;
@@ -24,14 +20,14 @@
         networking.hostName = "${hostnameroot}-LAB";
       }
       # Hardware Configuration START
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-cpu-amd-pstate
-      nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       # Hardware Configuration END
       ./.lab/sys.nix
       ./.lab/net.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
@@ -65,13 +61,13 @@
         networking.hostName = "${hostnameroot}-WS";
       }
       # Hardware Configuration START
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-cpu-amd-pstate
-      nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       # Hardware Configuration END
       ./.nix/sys.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
@@ -101,7 +97,7 @@
   "${hostnameroot}-WSL" = lib.nixosSystem {
     inherit system;
     modules = [
-      nixos-wsl.nixosModules.default
+      inputs.nixos-wsl.nixosModules.default
       {
         networking.hostName = "${hostnameroot}-WSL";
         wsl = {
@@ -128,7 +124,7 @@
         };
       }
       ./.wsl/sys.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
@@ -148,9 +144,9 @@
       }
 
       {
-	environment.systemPackages = with pkgs; [
+	      environment.systemPackages = with pkgs; [
           inputs.neve.packages.${pkgs.system}.default
-	];
+	      ];
       }
     ];
     specialArgs = {inherit hostnameroot user inputs pkgs;};
