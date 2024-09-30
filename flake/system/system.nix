@@ -1,15 +1,16 @@
 {
   lib,
+  inputs,
   system,
   home-manager,
   user,
   allUsers,
   pkgs,
-  pkgs-unstable,
+#  pkgs-unstable,
   hostnameroot,
   nixos-wsl,
   nixos-hardware,
-
+  neve
 }: {
   "${hostnameroot}-LAB" = lib.nixosSystem {
     inherit system;
@@ -38,15 +39,9 @@
           useUserPackages = true;
           users = {
             ${user} = {
-              if ${user} = "kalki" then
-                imports = [
-                  ../../home/users/${user}.nix
-                  ../../home/vscode.nix
-                ];
-              else
-                imports = [
-                  ../../home/users/${user}.nix
-                ];
+              imports = [
+                ../../home/users/${user}.nix
+              ];
               nixpkgs.config = {
                 allowUnfree = true;
               };
@@ -55,7 +50,7 @@
         };
       }
     ];
-    specialArgs = {inherit hostnameroot user inputs pkgs-unstable;};
+    specialArgs = {inherit hostnameroot user inputs;};
   };
   "${hostnameroot}-WS" = lib.nixosSystem {
     inherit system;
@@ -111,7 +106,7 @@
         networking.hostName = "${hostnameroot}-WSL";
         wsl = {
           enable = true;
-          defaultUser = "${user}";
+          defaultUser = "mj";
           docker-desktop.enable = true;
           nativeSystemd = true;
           startMenuLaunchers = true;
@@ -126,10 +121,10 @@
               enabled = true;
             };
           };
-          interop = {
-            includePath = true;
-            register = false;
-          };
+	  interop = {
+	    includePath = true;
+	    register = false;
+	  };
         };
       }
       ./.wsl/sys.nix
@@ -140,30 +135,25 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           users = {
-            if ${user} = "kalki" then
-              ${user} = {
-                imports = [
-                  ../../home/users/${user}.nix
-                  ../../home/vscode.nix
-                ];
-                nixpkgs.config = {
-                  allowUnfree = true;
-                };
+            ${user} = {
+              imports = [
+                ../../home/users/${user}.nix
+              ];
+              nixpkgs.config = {
+                allowUnfree = true;
               };
-            else
-              ${user} = {
-                imports = [
-                  ../../home/users/${user}.nix
-                ];
-                nixpkgs.config = {
-                  allowUnfree = true;
-                };
-              };
+            };
           };
         };
       }
+
+      {
+	environment.systemPackages = with pkgs; [
+          inputs.neve.packages.${pkgs.system}.default
+	];
+      }
     ];
-    specialArgs = {inherit hostnameroot user inputs pkgs-unstable;};
+    specialArgs = {inherit hostnameroot user inputs pkgs;};
   };
   # Currently not operational
   # 

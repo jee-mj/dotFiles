@@ -1,8 +1,8 @@
 {
   inputs,
-  user, hostnameroot,
+  user, neve, hostnameroot,
   specialArgs, options, modulesPath,
-  lib, pkgs, config, pkgs-unstable
+  lib, pkgs, config,
 }: let
   allUsers = ["mj" "vim" "kalki" "root"];
   userImports = builtins.map (username: ./users/${username}.nix) allUsers;

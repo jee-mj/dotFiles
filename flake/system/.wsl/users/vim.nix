@@ -1,6 +1,6 @@
 {
   inputs,
-  user, hostnameroot,
+  user, neve, hostnameroot,
   specialArgs, options, modulesPath,
   lib, pkgs, config, pkgs-unstable
 }: {

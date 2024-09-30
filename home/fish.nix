@@ -10,9 +10,9 @@
     fzf = {
       enableFishIntegration = true;
     };
-    mcfly = {
-      enableFishIntegration = true;
-    };
+#     mcfly = {
+#       enableFishIntegration = true;
+#     };
     mise = {
       enableFishIntegration = true;
     };
@@ -24,6 +24,8 @@
       package = pkgs.fish;
       shellAbbrs = {
         nixgc = "sudo ~/.config/jee-mj/nixgc.fish";
+        vi = "nvim";
+        vim = "nvim";
       };
       shellAliases = {
         # nvim = "nvim-use-node";

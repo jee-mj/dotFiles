@@ -2,9 +2,8 @@
   inputs,
   config,
   pkgs,
-  pkgs-unstable,
   lib,
-  user,
+  user, 
   hostnameroot,
   specialArgs, options, modulesPath
 }: let

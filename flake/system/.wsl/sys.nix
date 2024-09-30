@@ -4,7 +4,7 @@
   allUsers,
   config,
   pkgs,
-  pkgs-unstable,
+#  pkgs-unstable,
   user,
   hostnameroot,
   specialArgs,

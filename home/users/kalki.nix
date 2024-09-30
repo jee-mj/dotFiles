@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../fish.nix
-    ../vscode.nix
     # ./private/mj/ssh.nix
   ];
 

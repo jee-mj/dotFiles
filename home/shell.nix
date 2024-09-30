@@ -3,9 +3,9 @@
   specialArgs, options, modulesPath,
   lib, pkgs, config, nixosConfig, osConfig
 }: {
-  imports = [
-    ./neovim.nix
-  ];
+ imports = [
+   ./tmux.nix
+ ];
   programs = {
     home-manager = {
       enable = true;
@@ -19,12 +19,12 @@
       enable = true;
       package = pkgs.htop-vim;
     };
-    mcfly = {
-      enable = true;
-      fuzzySearchFactor = 3;
-      fzf.enable = true;
-      keyScheme = "vim";
-    };
+#     mcfly = {
+#       enable = true;
+#       fuzzySearchFactor = 3;
+#       fzf.enable = true;
+#       keyScheme = "vim";
+#     };
     mise = {
       enable = true;
       package = pkgs.mise;
@@ -68,7 +68,7 @@
       };
     };
     packages = with pkgs; [
-      # neovim
+      # tmux
       ripgrep
       xclip
     ];

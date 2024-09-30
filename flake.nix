@@ -3,45 +3,49 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixpkgs-unstable = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware";
+    neve = {
+      url = "github:jee-mj/Neve?ref=testing";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+#     nixvim = {
+#       inputs.nixpkgs.follows = "nixpkgs";
+#     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+    };
   };
   outputs =
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-unstable,
       nix-darwin,
       home-manager,
       nixos-hardware,
-      nixos-wsl
+      nixos-wsl,
+      neve,
     }:
     let
       allUsers = [
         "mj"
         "vim"
-        "kalki"
+#        "kalki"
         "root"
       ];
       hostnameroot = "URIEL";
       system = "x86_64-linux";
       user = "mj";
       pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -58,9 +62,9 @@
           home-manager
           hostnameroot
           pkgs
-          pkgs-unstable
           nixos-wsl
           nixos-hardware
+          neve
           ;
       };
 
