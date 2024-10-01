@@ -1,4 +1,9 @@
-{pkgs, lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath, neve}: {
+{
+  inputs,
+  user, neve, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
+}: {
   time = {
     hardwareClockInLocalTime = true;
     timeZone = "Australia/Sydney";

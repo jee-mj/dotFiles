@@ -1,11 +1,8 @@
 {
   inputs,
-  config,
-  lib,
-  pkgs,
-  user,
-  hostnameroot,
+  user, hostnameroot,
   specialArgs, options, modulesPath,
+  lib, pkgs, config
 }: {
   boot = {
     blacklistedKernelModules = [  ]; # "amdgpu"

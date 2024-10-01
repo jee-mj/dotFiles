@@ -1,4 +1,12 @@
-{lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath}: {
+{
+  inputs,
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
+}: {
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
   time = {
     hardwareClockInLocalTime = true;
     timeZone = "Australia/Sydney";

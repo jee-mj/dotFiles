@@ -1,11 +1,8 @@
 {
   inputs,
-  config,
-  pkgs,
-  user, 
-  lib,
-  hostnameroot,
-  specialArgs, options, modulesPath
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
 }: {
   programs = {
     fish.enable = true;

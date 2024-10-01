@@ -1,4 +1,9 @@
-{lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath}:
+{
+  inputs,
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
+}:
 {
   #systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
   networking.useNetworkd = true;

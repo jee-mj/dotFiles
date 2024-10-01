@@ -1,11 +1,8 @@
 {
   inputs,
-  config,
-  lib,
-  pkgs,
-  user,
-  hostnameroot,
-  specialArgs, options, modulesPath
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
 }: {
   imports = [
     ../../virtual/podman.nix

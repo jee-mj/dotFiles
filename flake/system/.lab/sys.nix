@@ -1,14 +1,8 @@
 {
-  lib,
   inputs,
-  allUsers,
-  config,
-  pkgs,
-  user,
-  hostnameroot,
-  specialArgs,
-  options,
-  modulesPath,
+  user, allUsers, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
 }: {
   imports = [
     ../../../hardware-configuration.nix

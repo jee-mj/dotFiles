@@ -1,14 +1,8 @@
 {
-  lib,
   inputs,
-  allUsers,
-  config,
-  pkgs,
-  user,
-  hostnameroot,
-  specialArgs,
-  options,
-  modulesPath,
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
 }: {
   imports = [
     ./package/pkgs.nix

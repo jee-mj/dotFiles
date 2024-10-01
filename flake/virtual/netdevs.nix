@@ -1,4 +1,9 @@
-{lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath}:
+{
+  inputs,
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
+}:
 {
   systemd.network = {
     netdevs = {
