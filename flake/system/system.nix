@@ -80,6 +80,11 @@
         };
       }
       inputs.vscode-server.nixosModules.default
+      {
+	      environment.systemPackages = with pkgs; [
+          inputs.neve.packages.${pkgs.system}.default
+	      ];
+      }
     ];
     specialArgs = {inherit hostnameroot user inputs;};
   };
