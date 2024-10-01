@@ -14,9 +14,6 @@
       url = "github:jee-mj/Neve?ref=testing";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#     nixvim = {
-#       inputs.nixpkgs.follows = "nixpkgs";
-#     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,15 +21,18 @@
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
     };
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+    };
   };
   outputs =
     inputs@{
-      self,
-      nixpkgs,
-      nix-darwin,
-      home-manager,
+      self, nixpkgs,
       nixos-hardware,
       nixos-wsl,
+      nix-darwin,
+      home-manager,
+      vscode-server,
       neve,
     }:
     let
@@ -62,8 +62,6 @@
           home-manager
           hostnameroot
           pkgs
-          nixos-wsl
-          nixos-hardware
           neve
           ;
       };

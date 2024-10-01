@@ -3,8 +3,7 @@
   user, hostnameroot,
   specialArgs, options, modulesPath,
   lib, pkgs, config
-}:
-{
+}: {
   systemd.network = {
     netdevs = {
       "vm-root0" = {

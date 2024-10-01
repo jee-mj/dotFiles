@@ -6,7 +6,7 @@
 }: {
   imports = [
     ../fish.nix
-    ./private/mj/tmux.nix
+    # ./private/mj/tmux.nix
   ];
 
   options = {};

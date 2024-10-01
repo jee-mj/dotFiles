@@ -42,6 +42,8 @@
       enable = true;
       powerOnBoot = true;
     };
+    enableRedistributableFirmware = true;
+    enableAllFirmware = true;
     pulseaudio = {
       enable = false;
     };
@@ -51,32 +53,30 @@
 
   networking = {
     # enableIPv6 = true;
-    firewall.enable = false;
+    firewall.enable = true;
     networkmanager = {
-      enable = false;
+      enable = true;
       wifi.powersave = false;
     };
   };
 
   services = {
     pipewire = {
-      enable = true;
+      enable = false;
       alsa = {
-        enable = true;
-        support32Bit = true;
+        enable = false;
+        support32Bit = false;
       };
-      # jack.enable = true;
-      pulse.enable = true;
+      pulse.enable = false;
     };
     ntp.enable = true;
-    # printing.enable = true;
-    # xserver.videoDrivers = ["nvidia"];
     openssh = {
       enable = true;
       settings = {
-        PermitRootLogin = "no";             # Disable root login over SSH
-        PasswordAuthentication = false;     # Enforce key-based authentication
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
       };
     };
+    vscode-server.enable = true;
   };
 }

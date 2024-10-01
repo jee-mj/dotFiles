@@ -3,9 +3,6 @@
   specialArgs, options, modulesPath,
   lib, pkgs, config, nixosConfig, osConfig
 }: {
- imports = [
-   ./tmux.nix
- ];
   programs = {
     home-manager = {
       enable = true;
@@ -19,12 +16,6 @@
       enable = true;
       package = pkgs.htop-vim;
     };
-#     mcfly = {
-#       enable = true;
-#       fuzzySearchFactor = 3;
-#       fzf.enable = true;
-#       keyScheme = "vim";
-#     };
     mise = {
       enable = true;
       package = pkgs.mise;
@@ -75,7 +66,6 @@
     shellAliases = {
       lsd = "lsd -la";
       lst = "lsd -la --tree --depth 2";
-      # nvim-use-node = "nix-shell ~/.config/nvim/shell.nix --run nvim";
     };
   };
 }

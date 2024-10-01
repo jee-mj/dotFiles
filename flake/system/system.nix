@@ -3,7 +3,7 @@
   inputs,
   system,
   home-manager,
-  user,
+  user, neve,
   allUsers,
   pkgs,
   hostnameroot
@@ -27,6 +27,7 @@
       # Hardware Configuration END
       ./.lab/sys.nix
       ./.lab/net.nix
+      # ./private/ssh.nix
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -45,6 +46,40 @@
           };
         };
       }
+    ];
+    specialArgs = {inherit hostnameroot user inputs;};
+  };
+  "${hostnameroot}-NUC" = lib.nixosSystem {
+    inherit system;
+    modules = [
+      {
+        networking.hostName = "${hostnameroot}-NUC";
+      }
+      # Hardware Configuration START
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      # Hardware Configuration END
+      ./.nuc/sys.nix
+      ./.nuc/network.nix
+      # ./private/ssh.nix
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          extraSpecialArgs = {inherit user;};
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users = {
+            ${user} = {
+              imports = [
+                ../../home/users/${user}.nix
+              ];
+              nixpkgs.config = {
+                allowUnfree = true;
+              };
+            };
+          };
+        };
+      }
+      inputs.vscode-server.nixosModules.default
     ];
     specialArgs = {inherit hostnameroot user inputs;};
   };
