@@ -2,8 +2,7 @@
 
 ## Yet Another dotFiles Repository
 
-### current status: still integrating WSL into main config
-
+### current status: procrastinating learning nix further
 These are my dotFiles for NixOS.
 
 Anyone can use these to build my preferred working environment on a workstation using AMD CPU with NVIDIA GPU and much more.
