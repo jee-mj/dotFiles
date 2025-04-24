@@ -1,11 +1,17 @@
 {
-  config,
+  inputs,
+  user,
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
   pkgs,
-  user
+  config,
 }: {
   imports = [
     ../../virtual/zerotier.nix
-    # ../../virtual/docker.nix
+    ../../virtual/docker.nix
     ../../virtual/podman.nix
     ../../virtual/virt-manager.nix
   ];

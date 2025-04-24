@@ -21,11 +21,11 @@ with pkgs; [
   libreoffice-qt
   notable
   obs-studio
+  livebook
 
   caprine-bin
   discord
   element-desktop
-  element-desktop-wayland
   hexchat
   # teams-for-linux # depends on electron 29.4.6 (eol)
   telegram-desktop
@@ -34,7 +34,7 @@ with pkgs; [
   signal-desktop
   slack
   ssh-chat
-  wire-desktop
+  # wire-desktop # insecure
   whatsapp-for-linux
   whatsapp-chat-exporter
   zulip

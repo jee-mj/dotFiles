@@ -227,6 +227,14 @@ else
     end
 end
 
+#
+# Tmux
+#
+function use_tmux
+    if not test -n "$TMUX"
+        tmux new-session -s NixOS || tmux attach-session -t NixOS
+    end
+end
 
 #
 # Prompt
@@ -241,4 +249,5 @@ function fish_prompt
     __exists git; and prompt_git
     __exists svn; and prompt_svn
     prompt_finish
+    # use_tmux
 end

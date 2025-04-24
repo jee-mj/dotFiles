@@ -1,15 +1,17 @@
 {
   inputs,
-  config,
-  lib,
-  pkgs,
-  pkgs-unstable,
   user,
   hostnameroot,
-  specialArgs, options, modulesPath,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+  _class, # musnix?
 }: {
   boot = {
-    blacklistedKernelModules = [  ]; # "amdgpu"
+    blacklistedKernelModules = []; # "amdgpu"
     initrd = {
       systemd = {
         dbus.enable = true;
@@ -27,10 +29,10 @@
       "net.core.rmem_max" = 67108864;
       "net.ipv4.tcp_rmem" = "1024 131072 67108864";
       "net.ipv4.tcp_wmem" = "1024 131072 67108864";
-      "vm.swappiness" = 10;
+      # "vm.swappiness" = 10;
     };
     ## The set of kernel modules to be loaded in the second stage of the boot process.
-    kernelModules = ["kvm-amd" "wl" "ecryptfs" "tcp_bbr"];
+    kernelModules = ["kvm-amd" "wl" "ecryptfs" "tcp_bbr" "snd-seq" "snd-rawmidi"];
     kernelParams = ["nohibernate"];
     loader = {
       efi = {

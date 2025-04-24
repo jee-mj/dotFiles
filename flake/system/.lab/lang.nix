@@ -1,4 +1,51 @@
-{lib, config, inputs, user, hostnameroot, specialArgs, options, modulesPath, pkgs-unstable}: {
+{
+  inputs,
+  user,
+  neve,
+  claude,
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+  _class, # musnix?
+}: {
+  fonts.packages = with pkgs; [
+    bakoma_ttf
+    cantarell-fonts
+    charis-sil
+    corefonts
+    dejavu_fonts
+    eurofurence
+    freefont_ttf
+    google-fonts
+    gyre-fonts
+    helvetica-neue-lt-std
+    # joypixels
+    libertinus
+    libre-bodoni
+    nerd-fonts._0xproto
+    nerd-fonts.roboto-mono
+    nerd-fonts.victor-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-lgc-plus
+    orbitron
+    oxygenfonts
+    poppins
+    redhat-official-fonts
+    roboto-flex
+    stix-otf
+    stix-two
+    ttf-indic
+    typodermic-public-domain
+    ubuntu-sans
+    ultimate-oldschool-pc-font-pack
+    vistafonts
+    xits-math
+  ];
   time = {
     hardwareClockInLocalTime = true;
     timeZone = "Australia/Sydney";

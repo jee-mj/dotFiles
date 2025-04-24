@@ -1,6 +1,6 @@
 {
   config,
-  pkgs
+  pkgs,
 }: {
   imports = [
     ./shell.nix
@@ -20,9 +20,6 @@
       };
     };
     fzf = {
-      enableBashIntegration = true;
-    };
-    mcfly = {
       enableBashIntegration = true;
     };
     mise = {

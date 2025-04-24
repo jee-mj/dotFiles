@@ -7,7 +7,6 @@ with pkgs; [
   vlc
   # handbrake
 
-  nerdfonts
   open-sans
   zilla-slab
   roboto
@@ -32,7 +31,6 @@ with pkgs; [
   libjack2
   jack2
   qjackctl
-  jack2Full
   jack_capture
   kdePackages.partitionmanager
   exfatprogs

@@ -1,15 +1,14 @@
 {
-  lib,
   inputs,
-  allUsers,
-  config,
-  pkgs,
-  pkgs-unstable,
   user,
   hostnameroot,
   specialArgs,
   options,
   modulesPath,
+  lib,
+  pkgs,
+  config,
+  _class, # musnix?
 }: {
   imports = [
     ../../../hardware-configuration.nix
@@ -22,38 +21,44 @@
     ./user.nix
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"]; 
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
+      sandbox = false;
       substituters = [];
-      trusted-users = [user];
+      trusted-users = ["mj" "vim"];
     };
   };
   nixpkgs = {
     config = {
       allowUnfree = true;
-      # Force building the compiler toolchain from source
-      allowBootstrapBinaryCaches = false;
+      # Allow Binary Caches
+      allowBootstrapBinaryCaches = true;
       # Use specific configurations that rebuild the bootstrap binaries
       bootstrapPackages = pkgs.rebuild-bootstrap;
     };
   };
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    sudo = {
+      enable = true;
+      extraConfig = ''
+        %wheel ALL=(ALL) NOPASSWD: ALL
+      '';
+    };
+  };
 
   hardware = {
     bluetooth = {
       enable = true;
       powerOnBoot = true;
     };
-    pulseaudio = {
-      enable = false;
-    };
     usb-modeswitch.enable = false;
-    usbStorage.manageStartStop = true;
+    usbStorage.manageShutdown = true;
   };
 
   networking = {
@@ -66,24 +71,35 @@
   };
 
   services = {
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      # jack.enable = true;
-      pulse.enable = true;
-    };
-    ntp.enable = true;
-    # printing.enable = true;
-    # xserver.videoDrivers = ["nvidia"];
+    xserver.videoDrivers = ["nvidia"];
     openssh = {
       enable = true;
       settings = {
-        PermitRootLogin = "no";             # Disable root login over SSH
-        PasswordAuthentication = false;     # Enforce key-based authentication
+        PermitRootLogin = "no"; # Disable root login over SSH
+        PasswordAuthentication = false; # Enforce key-based authentication
       };
     };
+    postgresql = {
+      enable = true;
+      enableTCPIP = true;
+      ensureDatabases = ["mydatabase" "solana_token_historical"];
+      authentication = pkgs.lib.mkOverride 10 ''
+        local all all trust
+        host solana_token_historical trader 127.0.0.1/32 trust
+        host all admin all password
+      '';
+      initialScript = pkgs.writeText "init-sql-script" ''
+        CREATE USER mj;
+        CREATE DATABASE mj OWNER mj;
+        GRANT ALL PRIVILEGES ON DATABASE mj TO mj;
+        ALTER USER mj WITH SUPERUSER;
+        CREATE USER trader;
+        CREATE DATABASE solana_token_historical OWNER trader;
+        GRANT ALL PRIVILEGES ON DATABASE solana_token_historical TO trader;
+      '';
+    };
+
+    vscode-server.enable = true;
+    usbmuxd.enable = true;
   };
 }

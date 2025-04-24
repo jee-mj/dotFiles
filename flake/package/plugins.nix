@@ -3,7 +3,6 @@ with pkgs; [
   airwindows-lv2
   calf
   cmt
-  distrho
   gxplugins-lv2
   infamousPlugins
   lsp-plugins
@@ -47,4 +46,6 @@ with pkgs; [
   stochas
   paulstretch
   vmpk
+  ingen
+  virtual-ans
 ]

@@ -1,7 +1,13 @@
 {
-  config,
   lib,
-  pkgs
+  user,
+  inputs,
+  options,
+  modulesPath,
+  specialArgs,
+  hostnameroot,
+  config,
+  pkgs,
 }: {
   imports = [
     ./desktop.nix

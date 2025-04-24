@@ -1,10 +1,8 @@
 {
   lib,
   inputs,
-  allUsers,
   config,
   pkgs,
-  pkgs-unstable,
   user,
   hostnameroot,
   specialArgs,
@@ -18,11 +16,11 @@
     ./user.nix
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"]; 
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       substituters = [];
       trusted-users = [user];

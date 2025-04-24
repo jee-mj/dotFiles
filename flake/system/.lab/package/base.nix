@@ -1,7 +1,20 @@
 {pkgs}:
 with pkgs; [
-  nerdfonts
+  # nerdfonts
+  btrfs-progs
   exfatprogs
-
-  # canarytail
+  # carla
+  zam-plugins
+  localsend
+  # zoom-us
+  # suipackage
+  #  canarytail
+  libimobiledevice
+  idevicerestore
+  ifuse
+  aha
+  fwupd
+  pciutils
+  usbutils
+  linuxquota
 ]

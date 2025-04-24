@@ -1,10 +1,17 @@
 {
+  lib,
+  user,
+  inputs,
+  options,
+  modulesPath,
+  specialArgs,
+  hostnameroot,
   config,
-  pkgs
+  pkgs,
 }: {
   virtualisation = {
     docker = {
-      enable = true;
+      # enable = true;
       rootless = {
         enable = true;
         setSocketVariable = true;

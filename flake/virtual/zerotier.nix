@@ -1,5 +1,5 @@
 let
-  privateZeroTierInterfaces = [ "" ]; # ZT NET INTERFACE # ztxxxxxxx
+  privateZeroTierInterfaces = ["ztjlhs2qdk"]; # ZT NET INTERFACE # ztxxxxxxx
 in {
   # networking.firewall.enable = true;
   networking.firewall.trustedInterfaces = privateZeroTierInterfaces;
@@ -18,5 +18,5 @@ in {
   };
 
   services.zerotierone.enable = true;
-  services.zerotierone.joinNetworks = [ "" ]; # ZT NETWORK ID - 16 digits
+  services.zerotierone.joinNetworks = [ "fada62b0154ff07f" ]; # ZT NETWORK ID - 16 digits
 }

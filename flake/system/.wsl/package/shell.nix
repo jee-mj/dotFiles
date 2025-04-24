@@ -6,6 +6,6 @@ with pkgs; [
   rsync
   tldr
   tree
-  wget
   xsel
+  wget
 ]

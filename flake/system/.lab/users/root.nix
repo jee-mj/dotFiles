@@ -1,8 +1,14 @@
 {
   inputs,
-  user, hostnameroot,
-  specialArgs, options, modulesPath,
-  lib, pkgs, config, pkgs-unstable
+  user,
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+  _class, # musnix?
 }: {
   users = {
     users = {

@@ -8,5 +8,5 @@ with pkgs; [
   p7zip
   ripgrep
 
-  microsoft-edge
+  # microsoft-edge
 ]

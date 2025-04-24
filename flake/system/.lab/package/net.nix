@@ -7,7 +7,7 @@ with pkgs; [
   tcpdump
   whois
   wireshark
-  zeek
+  # zeek
   openssl
   quictls
 ]

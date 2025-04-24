@@ -1,4 +1,16 @@
-{config}: {
+{
+  inputs,
+  user,
+  neve,
+  claude,
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+}: {
   time = {
     hardwareClockInLocalTime = true;
     timeZone = "Australia/Sydney";

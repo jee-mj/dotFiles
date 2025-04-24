@@ -1,18 +1,28 @@
 # home.nix
 {
   user,
-  specialArgs, options, modulesPath,
-  lib, pkgs, config, nixosConfig, osConfig
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+  nixosConfig,
+  osConfig,
+  _class, # musnix?
 }: {
   imports = [
+    ../hyprland.nix
+    ../waybar.nix
     ../fish.nix
     ../vscode.nix
-    # ./private/mj/ssh.nix
+    ./private/mj/tmux.nix
   ];
 
   options = {};
   config = {
     programs = {
+      floorp.enable = true;
       gh = {
         enable = true;
         package = pkgs.gh;
@@ -36,14 +46,18 @@
       git = {
         enable = true;
         extraConfig = {
-          gpg."ssh".program = "${pkgs._1password}/bin/op-ssh-sign";
+          gpg."ssh".program = "${pkgs._1password-cli}/bin/op-ssh-sign";
           push.autoSetupRemote = true;
+          "http.https://*.mj/" = {
+            sslVerify = false;
+          };
         };
         lfs.enable = true;
         package = pkgs.git;
         userName = "jee-mj";
         userEmail = "28581723+jee-mj@users.noreply.github.com";
       };
+      home-manager.enable = true;
     };
 
     home = {
@@ -55,9 +69,9 @@
       pointerCursor = {
         name = "macOS-Monterey";
         package = pkgs.apple-cursor;
-        size = 24;
+        size = 32;
       };
-      stateVersion = "24.05";
+      stateVersion = "24.11";
       sessionVariables = {
         EDITOR = "nvim";
       };

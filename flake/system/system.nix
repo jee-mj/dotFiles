@@ -1,19 +1,18 @@
 {
   lib,
+  inputs,
   system,
-  home-manager,
   user,
-  allUsers,
+  neve,
+  claude,
+  waybar,
   pkgs,
-  pkgs-unstable,
   hostnameroot,
-  nixos-wsl,
-  nixos-hardware,
-
 }: {
   "${hostnameroot}-LAB" = lib.nixosSystem {
     inherit system;
     modules = [
+      inputs.musnix.nixosModules.musnix
       {
         hardware.nvidia.open = false;
         hardware.nvidia.prime = {
@@ -23,46 +22,63 @@
         networking.hostName = "${hostnameroot}-LAB";
       }
       # Hardware Configuration START
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-cpu-amd-pstate
-      nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       # Hardware Configuration END
       ./.lab/sys.nix
       ./.lab/net.nix
-      home-manager.nixosModules.home-manager
+      ../environment/update.nix
+      ./private/ssh.nix
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
           useGlobalPkgs = true;
           useUserPackages = true;
           users = {
-            ${user} = {
-              if ${user} = "kalki" then
-                imports = [
-                  ../../home/users/${user}.nix
-                  ../../home/vscode.nix
-                ];
-              else
-                imports = [
-                  ../../home/users/${user}.nix
-                ];
-              nixpkgs.config = {
-                allowUnfree = true;
-              };
+            mj = {
+              imports = [
+                ../../home/users/mj.nix
+              ];
+            };
+            kalki = {
+              imports = [
+                ../../home/users/kalki.nix
+              ];
+            };
+            vim = {
+              imports = [
+                ../../home/users/vim.nix
+              ];
             };
           };
         };
       }
+      inputs.vscode-server.nixosModules.default
+      {
+        environment.systemPackages = [
+          inputs.neve.packages.${pkgs.system}.default
+          inputs.claude.packages.${system}.claude-desktop-with-fhs
+        ];
+      }
+      ({pkgs, ...}: {
+        nixpkgs.overlays = [
+          (_: _: {waybar_git = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.waybar;})
+        ];
+      })
     ];
-    specialArgs = {inherit hostnameroot user inputs pkgs-unstable;};
+    specialArgs = {inherit hostnameroot user inputs;};
   };
   "${hostnameroot}-WS" = lib.nixosSystem {
     inherit system;
     modules = [
+      inputs.musnix.nixosModules.musnix
       {
         environment.systemPackages = [
         ];
+        hardware.nvidia.open = false;
         hardware.nvidia.prime = {
           amdgpuBusId = "PCI:11:0:0";
           nvidiaBusId = "PCI:1:0:0";
@@ -70,17 +86,16 @@
         networking.hostName = "${hostnameroot}-WS";
       }
       # Hardware Configuration START
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-cpu-amd-pstate
-      nixos-hardware.nixosModules.common-cpu-amd-zenpower
-      nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-cpu-amd
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       # Hardware Configuration END
       ./.nix/sys.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
-          useGlobalPkgs = true;
           useUserPackages = true;
           users = {
             ${user} = {
@@ -106,12 +121,12 @@
   "${hostnameroot}-WSL" = lib.nixosSystem {
     inherit system;
     modules = [
-      nixos-wsl.nixosModules.default
+      inputs.nixos-wsl.nixosModules.default
       {
         networking.hostName = "${hostnameroot}-WSL";
         wsl = {
           enable = true;
-          defaultUser = "${user}";
+          defaultUser = "mj";
           docker-desktop.enable = true;
           nativeSystemd = true;
           startMenuLaunchers = true;
@@ -133,40 +148,35 @@
         };
       }
       ./.wsl/sys.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
           extraSpecialArgs = {inherit user;};
-          useGlobalPkgs = true;
+          # useGlobalPkgs = true;
           useUserPackages = true;
           users = {
-            if ${user} = "kalki" then
-              ${user} = {
-                imports = [
-                  ../../home/users/${user}.nix
-                  ../../home/vscode.nix
-                ];
-                nixpkgs.config = {
-                  allowUnfree = true;
-                };
+            ${user} = {
+              imports = [
+                ../../home/users/${user}.nix
+              ];
+              nixpkgs.config = {
+                allowUnfree = true;
               };
-            else
-              ${user} = {
-                imports = [
-                  ../../home/users/${user}.nix
-                ];
-                nixpkgs.config = {
-                  allowUnfree = true;
-                };
-              };
+            };
           };
         };
       }
+
+      {
+        environment.systemPackages = with pkgs; [
+          inputs.neve.packages.${pkgs.system}.default
+        ];
+      }
     ];
-    specialArgs = {inherit hostnameroot user inputs pkgs-unstable;};
+    specialArgs = {inherit hostnameroot user inputs;};
   };
   # Currently not operational
-  # 
+  #
   # "${hostnameroot}-MBP" = lib.nixosSystem {
   #   inherit system;
   #   modules = [
@@ -201,7 +211,7 @@
   #   ];
   #   specialArgs = {inherit hostnameroot user inputs;};
   # };
-  
+
   # "${hostnameroot}-SURFACE" = lib.nixosSystem {
   #   inherit system;
   #   modules = [

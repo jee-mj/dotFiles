@@ -1,10 +1,16 @@
 {
   inputs,
-  user, hostnameroot,
-  specialArgs, options, modulesPath,
-  lib, pkgs, config, pkgs-unstable
+  user,
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
 }: {
   imports = [
+    ./kde-apps.nix
     ./desktop.nix
   ];
 
@@ -21,16 +27,16 @@
     mime.enable = true;
     portal = {
       enable = true;
-      # gtkUsePortal = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
+        # xdg-desktop-portal-gtk
       ];
     };
     sounds.enable = true;
   };
 
   services = {
+    colord.enable = true;
     desktopManager.plasma6.enable = true;
     displayManager = {
       sddm = {

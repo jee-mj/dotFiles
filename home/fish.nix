@@ -1,16 +1,20 @@
 {
   user,
-  specialArgs, options, modulesPath,
-  lib, pkgs, config, nixosConfig, osConfig
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+  nixosConfig,
+  osConfig,
+  _class, # musnix?
 }: {
   imports = [
     ./shell.nix
   ];
   programs = {
     fzf = {
-      enableFishIntegration = true;
-    };
-    mcfly = {
       enableFishIntegration = true;
     };
     mise = {

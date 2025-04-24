@@ -11,4 +11,7 @@ with pkgs; [
   zrythm
   sonobus
   syncthing
+  jack2
+  jackmix
+  qjackctl
 ]

@@ -1,8 +1,13 @@
 {
-  config,
-  pkgs,
+  inputs,
   user,
-  hostnameroot
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
 }: {
   imports = [
     ../../../hardware-configuration.nix
@@ -15,7 +20,7 @@
     ./user.nix
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
   documentation.nixos.enable = false;
   fonts.fontconfig.cache32Bit = true;
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
@@ -44,7 +49,7 @@
       enable = false;
     };
     usb-modeswitch.enable = true;
-    usbStorage.manageStartStop = true;
+    usbStorage.manageShutdown = true;
   };
 
   networking = {

@@ -1,11 +1,19 @@
 {
   user,
-  specialArgs, options, modulesPath,
-  lib, pkgs, config, nixosConfig, osConfig
+  specialArgs,
+  options,
+  modulesPath,
+  lib,
+  pkgs,
+  config,
+  nixosConfig,
+  osConfig,
+  _class, # musnix?
 }: {
-  imports = [
-    ./neovim.nix
-  ];
+  #   imports = [
+  #    ./tmux.nix
+  #   ];
+  fonts.fontconfig.enable = true;
   programs = {
     home-manager = {
       enable = true;
@@ -19,12 +27,6 @@
       enable = true;
       package = pkgs.htop-vim;
     };
-    mcfly = {
-      enable = true;
-      fuzzySearchFactor = 3;
-      fzf.enable = true;
-      keyScheme = "vim";
-    };
     mise = {
       enable = true;
       package = pkgs.mise;
@@ -33,49 +35,45 @@
       enable = true;
       package = pkgs.navi;
     };
-  };
-  home = {
-    file = {
-      konsoleDefaultProfile = {
-        target = ".local/share/konsole/default.profile";
-        text = ''
-          [Appearance]
-          ColorScheme=Breeze
-          TabColor=0,0,0
+    foot = {
+      enable = true;
+      server.enable = true;
 
-          [Cursor Options]
-          CursorShape=1
-
-          [General]
-          Environment=TERM=xterm-256color,COLORTERM=truecolor
-          LocalTabTitleFormat=%d : %n
-          Name=Profile
-          Parent=FALLBACK/
-
-          [Interaction Options]
-          UnderlineFilesEnabled=true
-
-          [Keyboard]
-          KeyBindings=default
-
-          [Scrolling]
-          HistoryMode=2
-
-          [Terminal Features]
-          BlinkingCursorEnabled=true
-          UrlHintsModifiers=0
-        '';
+      settings = {
+        cursor = {
+          # Tango
+          color = "000000 babdb6";
+        };
+        colors = {
+          # Tango
+          foreground = "babdb6";
+          background = "000000";
+          regular0 = "2e3436";
+          regular1 = "cc0000";
+          regular2 = "4e9a06";
+          regular3 = "c4a000";
+          regular4 = "3465a4";
+          regular5 = "75507b";
+          regular6 = "06989a";
+          regular7 = "d3d7cf";
+          bright0 = "555753";
+          bright1 = "ef2929";
+          bright2 = "8ae234";
+          bright3 = "fce94f";
+          bright4 = "729fcf";
+          bright5 = "ad7fa8";
+          bright6 = "34e2e2";
+          bright7 = "eeeeec";
+        };
+        main = {
+          term = "xterm-256color";
+          font = "0xProto Nerd Font Mono:size=16";
+          dpi-aware = "yes";
+        };
+        mouse = {
+          hide-when-typing = "yes";
+        };
       };
-    };
-    packages = with pkgs; [
-      # neovim
-      ripgrep
-      xclip
-    ];
-    shellAliases = {
-      lsd = "lsd -la";
-      lst = "lsd -la --tree --depth 2";
-      # nvim-use-node = "nix-shell ~/.config/nvim/shell.nix --run nvim";
     };
   };
 }

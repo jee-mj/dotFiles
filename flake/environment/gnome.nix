@@ -1,6 +1,8 @@
 {
-  config,
-  pkgs
+  inputs,
+  user, hostnameroot,
+  specialArgs, options, modulesPath,
+  lib, pkgs, config
 }: {
   imports = [
     ./desktop.nix
@@ -38,9 +40,9 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
-  udev = {
-    packages = with pkgs; [gnome.gnome-settings-daemon];
-  };
+  # udev = {
+  #   packages = with pkgs; [gnome.gnome-settings-daemon];
+  # };
 
   services.xserver = {
     enable = true;

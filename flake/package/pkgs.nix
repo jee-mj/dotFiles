@@ -1,8 +1,13 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
-  user
+  user,
+  hostnameroot,
+  specialArgs,
+  options,
+  modulesPath,
 }: let
   aiApps = import ./ai.nix {inherit pkgs;};
   audioApps = import ./audio.nix {inherit pkgs;};
@@ -17,6 +22,9 @@
 in {
   environment.systemPackages = shellApps ++ baseApps ++ netApps;
 
+  users.users.kalki = {
+    packages = devApps ++ usrApps ++ aiApps ++ vmApps;
+  };
   users.users.mj = {
     packages = devApps ++ usrApps ++ audioApps ++ pluginApps ++ aiApps ++ vmApps;
   };
