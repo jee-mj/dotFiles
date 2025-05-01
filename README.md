@@ -2,7 +2,7 @@
 
 ## Yet Another dotFiles Repository
 
-### current status: procrastinating learning nix further
+### current status: unusable without VS code
 These are my dotFiles for NixOS.
 
 Anyone can use these to build my preferred working environment on a workstation using AMD CPU with NVIDIA GPU and much more.
